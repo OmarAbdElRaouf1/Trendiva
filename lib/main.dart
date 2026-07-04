@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/routing/app_router.dart';
 
 void main() {
@@ -11,9 +12,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      title: 'Flutter Demo',
+    return ScreenUtilPlusInit(
+      designSize: const Size(360, 884),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: AppRouter.onGenerateRoute,
+        title: 'Flutter Demo',
+      ),
     );
   }
 }
