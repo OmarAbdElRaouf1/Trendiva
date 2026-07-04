@@ -56,7 +56,7 @@ class ProductCard extends StatelessWidget {
                 child: RoundIconButton(
                   icon: Icons.favorite,
                   iconColor: Colors.white,
-                  backgroundColor: Colors.white.withOpacity(.25),
+                  backgroundColor: Colors.white.withValues(alpha:.25),
                   onPressed: () {},
                 ),
               ),
