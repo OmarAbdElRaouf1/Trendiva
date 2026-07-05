@@ -70,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
                     AuthButton(
                       text: 'Login',
                       onPressed: () {
-                        context.pushAndRemoveUntil(Routes.homeView);
+                        context.pushAndRemoveUntil(Routes.rootView);
                       },
                     ),
                     const SizedBox(height: 70),
