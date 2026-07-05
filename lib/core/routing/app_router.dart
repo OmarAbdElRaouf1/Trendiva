@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/features/auth/presentation/views/widgets/login_view.dart';
-import 'package:nti_final_project/features/auth/presentation/views/widgets/signup_view.dart';
+import 'package:nti_final_project/features/auth/presentation/views/login_view.dart';
+import 'package:nti_final_project/features/auth/presentation/views/signup_view.dart';
 import 'package:nti_final_project/features/home/presentation/views/home_view.dart';
 import 'package:nti_final_project/features/splash/presentation/views/splash_view.dart';
 import 'package:nti_final_project/root_view.dart';
