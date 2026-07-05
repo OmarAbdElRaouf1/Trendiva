@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nti_final_project/core/helpers/extensions.dart';
 import 'package:nti_final_project/core/routing/routes.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
@@ -37,78 +38,81 @@ class _SignupViewState extends State<SignupView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.authBackgroundColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const AuthHeader.signup(),
-              const SizedBox(height: 44),
-              Text('Join the\nmovement.', style: AppTextStyles.authBigTitle),
-              const SizedBox(height: 10),
-              Text(
-                'Discover the pinnacle of sophisticated fashion\nand effortless luxury.',
-                style: AppTextStyles.authSubtitle,
-              ),
-              const SizedBox(height: 28),
-              AuthTextField(
-                label: 'Full Name',
-                hint: 'Alexander McQueen',
-                controller: nameController,
-                verticalPadding: 17,
-              ),
-              const SizedBox(height: 18),
-              AuthTextField(
-                label: 'Email',
-                hint: 'alex@trendiva.com',
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                verticalPadding: 17,
-              ),
-              const SizedBox(height: 18),
-              AuthPasswordField(
-                label: 'Password',
-                hint: '••••••••',
-                controller: passwordController,
-                obscureText: hidePassword,
-                verticalPadding: 17,
-                onToggle: () => setState(() => hidePassword = !hidePassword),
-              ),
-              const SizedBox(height: 18),
-              AuthPasswordField(
-                label: 'Confirm Password',
-                hint: '••••••••',
-                controller: confirmPasswordController,
-                obscureText: hideConfirmPassword,
-                verticalPadding: 17,
-                onToggle: () =>
-                    setState(() => hideConfirmPassword = !hideConfirmPassword),
-              ),
-              const SizedBox(height: 18),
-              TermsCheckbox(
-                value: agree,
-                onChanged: (value) => setState(() => agree = value ?? false),
-              ),
-              const SizedBox(height: 28),
-              AuthButton(
-                text: 'Create Account',
-                onPressed: () {},
-                icon: Icons.arrow_forward,
-                height: 54,
-                shadowAlpha: 0.25,
-              ),
-              const SizedBox(height: 24),
-              AuthSwitchText(
-                normalText: 'Already have an account? ',
-                actionText: 'Log In',
-                onTap: () =>
-                    Navigator.pushReplacementNamed(context, Routes.loginView),
-              ),
-              const SizedBox(height: 20),
-            ],
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        backgroundColor: AppColors.authBackgroundColor,
+        body: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 22),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const AuthHeader.signup(),
+                const SizedBox(height: 44),
+                Text('Join the\nmovement.', style: AppTextStyles.authBigTitle),
+                const SizedBox(height: 10),
+                Text(
+                  'Discover the pinnacle of sophisticated fashion\nand effortless luxury.',
+                  style: AppTextStyles.authSubtitle,
+                ),
+                const SizedBox(height: 28),
+                AuthTextField(
+                  label: 'Full Name',
+                  hint: 'Alexander McQueen',
+                  controller: nameController,
+                  verticalPadding: 17,
+                ),
+                const SizedBox(height: 18),
+                AuthTextField(
+                  label: 'Email',
+                  hint: 'alex@trendiva.com',
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  verticalPadding: 17,
+                ),
+                const SizedBox(height: 18),
+                AuthPasswordField(
+                  label: 'Password',
+                  hint: '••••••••',
+                  controller: passwordController,
+                  obscureText: hidePassword,
+                  verticalPadding: 17,
+                  onToggle: () => setState(() => hidePassword = !hidePassword),
+                ),
+                const SizedBox(height: 18),
+                AuthPasswordField(
+                  label: 'Confirm Password',
+                  hint: '••••••••',
+                  controller: confirmPasswordController,
+                  obscureText: hideConfirmPassword,
+                  verticalPadding: 17,
+                  onToggle: () => setState(
+                    () => hideConfirmPassword = !hideConfirmPassword,
+                  ),
+                ),
+                const SizedBox(height: 18),
+                TermsCheckbox(
+                  value: agree,
+                  onChanged: (value) => setState(() => agree = value ?? false),
+                ),
+                const SizedBox(height: 28),
+                AuthButton(
+                  text: 'Create Account',
+                  onPressed: () {},
+                  icon: Icons.arrow_forward,
+                  height: 54,
+                  shadowAlpha: 0.25,
+                ),
+                const SizedBox(height: 24),
+                AuthSwitchText(
+                  normalText: 'Already have an account? ',
+                  actionText: 'Log In',
+                  onTap: () => context.pop(),
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
           ),
         ),
       ),
