@@ -68,4 +68,50 @@ abstract class AppTextStyles {
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
   );
+     static TextStyle authLogoTitle = TextStyle(
+    color: AppColors.primaryColor,
+    fontSize: 22.sp,
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle authSmallText = TextStyle(
+    fontSize: 13.sp,
+    color: AppColors.greyTextColor,
+  );
+
+  static TextStyle authLabel = TextStyle(
+    fontSize: 12.sp,
+    color: const Color(0xff303030),
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle authHint = TextStyle(
+    color: Colors.black38,
+    fontSize: 14.sp,
+  );
+
+  static TextStyle authLink = TextStyle(
+    color: AppColors.primaryColor,
+    fontWeight: FontWeight.w800,
+    fontSize: 14.sp,
+  );
+
+  static TextStyle authButton = TextStyle(
+    color: AppColors.whiteColor,
+    fontWeight: FontWeight.w800,
+    fontSize: 14.sp,
+  );
+
+  static TextStyle authBigTitle = TextStyle(
+    color: AppColors.primaryColor,
+    fontSize: 36.sp,
+    height: 1.08,
+    fontWeight: FontWeight.w900,
+  );
+
+  static TextStyle authSubtitle = TextStyle(
+    color: AppColors.greyTextColor,
+    fontSize: 14.sp,
+    height: 1.4,
+  ); 
 }
