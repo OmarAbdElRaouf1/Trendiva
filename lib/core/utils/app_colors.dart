@@ -9,4 +9,5 @@ abstract class AppColors {
   static const Color authFieldColor = Color(0xffF7F3F2);
   static const Color whiteColor = Colors.white;
   static const Color greyTextColor = Colors.black54;
+  static const Color accentColor = Color(0xff003D34);
 }

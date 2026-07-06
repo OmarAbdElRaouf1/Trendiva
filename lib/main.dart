@@ -5,11 +5,11 @@ import 'package:nti_final_project/core/routing/routes.dart';
 import 'package:nti_final_project/features/auth/presentation/views/forget_password.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Trendiva());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Trendiva extends StatelessWidget {
+  const Trendiva({super.key});
 
   @override
   Widget build(BuildContext context) {

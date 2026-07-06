@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nti_final_project/core/helpers/extensions.dart';
-import 'package:nti_final_project/core/routing/routes.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
 import '../widgets/auth_button.dart';
