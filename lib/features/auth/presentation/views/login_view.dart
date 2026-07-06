@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/helpers/extensions.dart';
 import 'package:nti_final_project/core/routing/routes.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
@@ -40,11 +42,11 @@ class _LoginViewState extends State<LoginView> {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 28),
             child: Column(
               children: [
-                const SizedBox(height: 30),
+                Gap(30.h),
                 AuthCard(
                   children: [
                     const AuthHeader.login(),
-                    const SizedBox(height: 36),
+                    Gap(36.h),
                     AuthTextField(
                       label: 'Email Address',
                       hint: 'name@example.com',
@@ -52,28 +54,32 @@ class _LoginViewState extends State<LoginView> {
                       prefixIcon: Icons.email_outlined,
                       keyboardType: TextInputType.emailAddress,
                     ),
-                    const SizedBox(height: 18),
+                    Gap(18.h),
                     AuthPasswordField(
                       label: 'Password',
                       hint: '••••••••',
                       controller: passwordController,
                       prefixIcon: Icons.lock_outline,
                       obscureText: hidePassword,
-                      labelTrailing: Text(
-                        'Forgot Password?',
-                        style: AppTextStyles.authLink.copyWith(fontSize: 11),
+                      labelTrailing: InkWell(
+                        onTap: () =>
+                            context.pushNamed(Routes.forgetPasswordView),
+                        child: Text(
+                          'Forgot Password?',
+                          style: AppTextStyles.authLink.copyWith(fontSize: 11),
+                        ),
                       ),
                       onToggle: () =>
                           setState(() => hidePassword = !hidePassword),
                     ),
-                    const SizedBox(height: 24),
+                    Gap(24.h),
                     AuthButton(
                       text: 'Login',
                       onPressed: () {
                         context.pushAndRemoveUntil(Routes.rootView);
                       },
                     ),
-                    const SizedBox(height: 70),
+                    Gap(70.h),
                     AuthSwitchText(
                       normalText: 'New to Trendiva? ',
                       actionText: 'Sign Up',
@@ -81,7 +87,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 28),
+                Gap(28.h),
                 const Text(
                   '© 2024 Trendiva Fashion. All rights reserved.',
                   style: TextStyle(fontSize: 11, color: Colors.black38),

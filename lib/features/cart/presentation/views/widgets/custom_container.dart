@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomContainer extends StatelessWidget {
@@ -18,7 +20,7 @@ class CustomContainer extends StatelessWidget {
             height: 160,
             width: 128,
           ),
-          SizedBox(width: 16),
+          Gap(16.w),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,7 +34,7 @@ class CustomContainer extends StatelessWidget {
                       color: Color(0xFF1C1B1B),
                     ),
                   ),
-                  SizedBox(width: 1),
+                  Gap(1.w),
 
                   IconButton(
                     onPressed: () {},
@@ -42,7 +44,7 @@ class CustomContainer extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 4),
+              Gap(4.h),
               Text(
                 'Size: M | Color: Emerald',
                 style: TextStyle(
@@ -51,7 +53,7 @@ class CustomContainer extends StatelessWidget {
                   color: Color(0xFF5D5F5C),
                 ),
               ),
-              SizedBox(height: 4),
+              Gap(4.h),
               Text(
                 '\$240.00',
                 style: TextStyle(
@@ -60,7 +62,7 @@ class CustomContainer extends StatelessWidget {
                   color: Color(0xFF7EBDAC),
                 ),
               ),
-              SizedBox(height: 9),
+              Gap(9.h),
               Container(
                 child: Row(
                   children: [

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/helpers/extensions.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
@@ -48,21 +50,21 @@ class _SignupViewState extends State<SignupView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const AuthHeader.signup(),
-                const SizedBox(height: 44),
+                Gap(44.h),
                 Text('Join the\nmovement.', style: AppTextStyles.authBigTitle),
-                const SizedBox(height: 10),
+                Gap(10.h),
                 Text(
                   'Discover the pinnacle of sophisticated fashion\nand effortless luxury.',
                   style: AppTextStyles.authSubtitle,
                 ),
-                const SizedBox(height: 28),
+                Gap(28.h),
                 AuthTextField(
                   label: 'Full Name',
                   hint: 'Alexander McQueen',
                   controller: nameController,
                   verticalPadding: 17,
                 ),
-                const SizedBox(height: 18),
+                Gap(18.h),
                 AuthTextField(
                   label: 'Email',
                   hint: 'alex@trendiva.com',
@@ -70,7 +72,7 @@ class _SignupViewState extends State<SignupView> {
                   keyboardType: TextInputType.emailAddress,
                   verticalPadding: 17,
                 ),
-                const SizedBox(height: 18),
+                Gap(18.h),
                 AuthPasswordField(
                   label: 'Password',
                   hint: '••••••••',
@@ -79,7 +81,7 @@ class _SignupViewState extends State<SignupView> {
                   verticalPadding: 17,
                   onToggle: () => setState(() => hidePassword = !hidePassword),
                 ),
-                const SizedBox(height: 18),
+                Gap(18.h),
                 AuthPasswordField(
                   label: 'Confirm Password',
                   hint: '••••••••',
@@ -90,12 +92,12 @@ class _SignupViewState extends State<SignupView> {
                     () => hideConfirmPassword = !hideConfirmPassword,
                   ),
                 ),
-                const SizedBox(height: 18),
+                Gap(18.h),
                 TermsCheckbox(
                   value: agree,
                   onChanged: (value) => setState(() => agree = value ?? false),
                 ),
-                const SizedBox(height: 28),
+                Gap(28.h),
                 AuthButton(
                   text: 'Create Account',
                   onPressed: () {},
@@ -103,13 +105,13 @@ class _SignupViewState extends State<SignupView> {
                   height: 54,
                   shadowAlpha: 0.25,
                 ),
-                const SizedBox(height: 24),
+                Gap(24.h),
                 AuthSwitchText(
                   normalText: 'Already have an account? ',
                   actionText: 'Log In',
                   onTap: () => context.pop(),
                 ),
-                const SizedBox(height: 20),
+                Gap(20.h),
               ],
             ),
           ),

@@ -32,7 +32,7 @@ class ProductsGridSection extends StatelessWidget {
             ),
           ),
         ),
-        Gap(16),
+        Gap(16.h),
         BlocBuilder<ProductsCubit, ProductsState>(
           builder: (context, state) {
             return switch (state) {

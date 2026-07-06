@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/features/home/data/models/product_model.dart';
 import 'package:nti_final_project/features/product_details/presentation/views/widgets/star_rating.dart';
@@ -30,9 +32,9 @@ class ReviewTile extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 6),
+        Gap(6.h),
         StarRating(rating: review.rating, size: 14),
-        const SizedBox(height: 8),
+        Gap(8.h),
         Text(
           review.comment,
           style: const TextStyle(
@@ -41,11 +43,11 @@ class ReviewTile extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        const SizedBox(height: 10),
+        Gap(10.h),
         Row(
           children: [
             const Icon(Icons.thumb_up_alt_outlined, size: 15, color: Colors.grey),
-            const SizedBox(width: 6),
+            Gap(6.w),
             Text(
               'Helpful (${review.helpfulCount})',
               style: const TextStyle(fontSize: 13, color: Colors.grey),

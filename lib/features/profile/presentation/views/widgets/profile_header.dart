@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
 
@@ -20,9 +22,9 @@ class ProfileHeader extends StatelessWidget {
             backgroundImage: AssetImage('assets/photos/profile_photo.png'),
           ),
         ),
-        const SizedBox(height: 20),
+        Gap(20.h),
         const Text('Mahmoud Elsebaei', style: AppTextStyles.profileName),
-        const SizedBox(height: 4),
+        Gap(4.h),
         const Text(
           'mahmoudelsebaei@trendiva.com',
           style: AppTextStyles.profileEmail,

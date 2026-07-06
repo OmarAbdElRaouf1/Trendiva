@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/features/home/data/models/product_model.dart';
 import 'package:nti_final_project/features/product_details/presentation/views/widgets/product_image_header.dart';
@@ -26,7 +28,7 @@ class ProductDetailsView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _RatingRow(product: product),
-                    const SizedBox(height: 12),
+                    Gap(12.h),
                     Text(
                       product.name,
                       style: const TextStyle(
@@ -35,11 +37,11 @@ class ProductDetailsView extends StatelessWidget {
                         color: AppColors.neutralColor,
                       ),
                     ),
-                    const SizedBox(height: 12),
+                    Gap(12.h),
                     _PriceRow(product: product),
-                    const SizedBox(height: 28),
+                    Gap(28.h),
                     const _SectionLabel('DESCRIPTION'),
-                    const SizedBox(height: 12),
+                    Gap(12.h),
                     Text(
                       product.description,
                       style: const TextStyle(
@@ -48,11 +50,11 @@ class ProductDetailsView extends StatelessWidget {
                         color: Colors.black87,
                       ),
                     ),
-                    const SizedBox(height: 28),
+                    Gap(28.h),
                     const Divider(height: 1),
-                    const SizedBox(height: 24),
+                    Gap(24.h),
                     _ReviewsSection(product: product),
-                    const SizedBox(height: 24),
+                    Gap(24.h),
                     const _WriteReviewButton(),
                   ],
                 ),
@@ -75,7 +77,7 @@ class _RatingRow extends StatelessWidget {
     return Row(
       children: [
         StarRating(rating: product.rating),
-        const SizedBox(width: 8),
+        Gap(8.w),
         Text(
           '${product.rating}  (${product.reviewCount} Reviews)',
           style: const TextStyle(fontSize: 13, color: Colors.grey),
@@ -104,7 +106,7 @@ class _PriceRow extends StatelessWidget {
           ),
         ),
         if (product.oldPrice != null) ...[
-          const SizedBox(width: 10),
+          Gap(10.w),
           Text(
             '\$${product.oldPrice!.toStringAsFixed(2)}',
             style: const TextStyle(
@@ -159,12 +161,12 @@ class _ReviewsSection extends StatelessWidget {
                 color: AppColors.neutralColor,
               ),
             ),
-            const SizedBox(width: 10),
+            Gap(10.w),
             Padding(
               padding: const EdgeInsets.only(bottom: 3),
               child: StarRating(rating: product.rating, size: 14),
             ),
-            const SizedBox(width: 6),
+            Gap(6.w),
             Padding(
               padding: const EdgeInsets.only(bottom: 3),
               child: Text(
@@ -174,7 +176,7 @@ class _ReviewsSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 20),
+        Gap(20.h),
         ListView.separated(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),

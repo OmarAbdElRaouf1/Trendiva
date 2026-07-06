@@ -21,18 +21,18 @@ class ProfileViewBody extends StatelessWidget {
         child: Column(
           children: [
             const ProfileHeader(),
-            const SizedBox(height: 32),
-            const Row(
+            Gap(32.h),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ProfileStats(numOfStats: '12', textOfStats: 'ORDERS'),
-                SizedBox(width: 16),
-                ProfileStats(numOfStats: '08', textOfStats: 'WISHLIST'),
-                SizedBox(width: 16),
-                ProfileStats(numOfStats: '24', textOfStats: 'REVIEWS'),
+                const ProfileStats(numOfStats: '12', textOfStats: 'ORDERS'),
+                Gap(16.w),
+                const ProfileStats(numOfStats: '08', textOfStats: 'WISHLIST'),
+                Gap(16.w),
+                const ProfileStats(numOfStats: '24', textOfStats: 'REVIEWS'),
               ],
             ),
-            const SizedBox(height: 32),
+            Gap(32.h),
             ProfileSection(
               title: 'PREFERENCES & ACCOUNT',
               children: [
@@ -53,7 +53,7 @@ class ProfileViewBody extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 32),
+            Gap(32.h),
             const ProfileSection(
               title: 'SUPPORT',
               titleSpacing: 8,
@@ -76,9 +76,9 @@ class ProfileViewBody extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            Gap(8.h),
             const LogoutButton(),
-            const SizedBox(height: 32),
+            Gap(32.h),
             const Text(
               'Trendiva Version 2.4.0 (Emerald Build)',
               style: AppTextStyles.profileVersion,

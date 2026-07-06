@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../widgets/custom_container.dart';
+import 'widgets/custom_container.dart';
 
 class CartView extends StatelessWidget {
   const CartView({super.key});
@@ -27,7 +29,9 @@ class CartView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: SvgPicture.asset('assets/icons/app_bar_icons/notification.svg'),
+            icon: SvgPicture.asset(
+              'assets/icons/app_bar_icons/notification.svg',
+            ),
           ),
         ],
       ),
@@ -36,7 +40,7 @@ class CartView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 32),
+            Gap(32.h),
             Text(
               'Your Shopping Bag',
               style: TextStyle(
@@ -45,7 +49,7 @@ class CartView extends StatelessWidget {
                 color: Color(0xFF1C1B1B),
               ),
             ),
-            SizedBox(height: 4),
+            Gap(4.h),
 
             Text(
               '3 items in your cart',
@@ -55,21 +59,20 @@ class CartView extends StatelessWidget {
                 color: Color(0xFF3F4945),
               ),
             ),
-            SizedBox(height: 24),
+            Gap(24.h),
             CustomContainer(),
-            SizedBox(height: 24),
+            Gap(24.h),
             CustomContainer(),
-            SizedBox(height: 24),
+            Gap(24.h),
             CustomContainer(),
-            SizedBox(height: 16),
-            Row(
-              children: [
+            Gap(16.h),
+            Row(children: [
 
               ],
             ),
-            SizedBox(height: 8),
+            Gap(8.h),
             Row(),
-            SizedBox(height: 16),
+            Gap(16.h),
             ElevatedButton(onPressed: () {}, child: Text('')),
           ],
         ),

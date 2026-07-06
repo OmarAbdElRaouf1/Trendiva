@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:nti_final_project/core/helpers/extensions.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_click.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_icon.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_text_field.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  ForgotPasswordScreen({Key? key}) : super(key: key);
+class ForgetPasswordView extends StatelessWidget {
+  ForgetPasswordView({super.key});
   final TextEditingController emailController = TextEditingController();
 
   @override
@@ -27,10 +30,15 @@ class ForgotPasswordScreen extends StatelessWidget {
                       color: Color(0xFF00342B),
                     ),
                   ),
-                  IconButton(icon: const Icon(Icons.close), onPressed: () {}),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () {
+                      context.pop();
+                    },
+                  ),
                 ],
               ),
-              const SizedBox(height: 40),
+              Gap(40.h),
               Container(
                 padding: const EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
@@ -55,13 +63,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                         color: Color(0xFF004333),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    Gap(10.h),
                     const Text(
                       'No worries! Enter the email address associated with your account and we\'ll send a link to reset your password.',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Color(0xff3F4945), height: 1.4),
                     ),
-                    const SizedBox(height: 30),
+                    Gap(30.h),
                     // Enter Email
                     AuthTextField(
                       label: 'Email Address',
@@ -70,18 +78,20 @@ class ForgotPasswordScreen extends StatelessWidget {
                       prefixIcon: Icons.email_outlined,
                       keyboardType: TextInputType.emailAddress,
                     ),
-                    const SizedBox(height: 24),
+                    Gap(24.h),
                     // submitButton
                     AuthButtonClick(
                       text: 'Send Reset Link',
                       onPressed: () {},
                       icon: Icons.arrow_forward,
                     ),
-                    const SizedBox(height: 20),
+                    Gap(20.h),
                     //backButton
                     AuthButtonIcon(
                       text: 'Back to Login',
-                      onPressed: () {},
+                      onPressed: () {
+                        context.pop();
+                      },
                       icon: Icons.arrow_back,
                     ),
                   ],

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 
 class AuthButtonClick extends StatelessWidget {
   const AuthButtonClick({
     super.key,
     required this.text,
-    required this.onPressed, required this.icon,
+    required this.onPressed,
+    required this.icon,
   });
   final String text;
   final VoidCallback onPressed;
@@ -23,12 +26,9 @@ class AuthButtonClick extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            text,
-            style: const TextStyle(color: Colors.white, fontSize: 16),
-          ),
-          const SizedBox(width: 8),
-           Icon(icon, color: Colors.white, size: 18),
+          Text(text, style: const TextStyle(color: Colors.white, fontSize: 16)),
+          Gap(8.w),
+          Icon(icon, color: Colors.white, size: 18),
         ],
       ),
     );

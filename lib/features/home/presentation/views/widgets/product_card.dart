@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/helpers/extensions.dart';
 import 'package:nti_final_project/core/routing/routes.dart';
@@ -69,7 +70,7 @@ class ProductCard extends StatelessWidget {
               ],
             ),
 
-            SizedBox(height: 24.h),
+            Gap(24.h),
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.w),
@@ -81,7 +82,7 @@ class ProductCard extends StatelessWidget {
                     style: AppTextStyles.productBrand,
                   ),
 
-                  SizedBox(height: 4.h),
+                  Gap(4.h),
 
                   Text(
                     product.name,
@@ -90,7 +91,7 @@ class ProductCard extends StatelessWidget {
                     style: AppTextStyles.productName,
                   ),
 
-                  SizedBox(height: 6.h),
+                  Gap(6.h),
 
                   Text(
                     '\$${product.price.toStringAsFixed(2)}',

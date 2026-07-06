@@ -16,7 +16,7 @@ class PromoBannerSection extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
         itemCount: 2,
-        separatorBuilder: (_, _) => const SizedBox(width: 12),
+        separatorBuilder: (_, _) => Gap(12.w),
         itemBuilder: (context, index) {
           return PromoCard(
             width: width * .78,
