@@ -4,11 +4,11 @@ import 'package:nti_final_project/core/routing/app_router.dart';
 import 'package:nti_final_project/core/routing/routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Trendiva());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Trendiva extends StatelessWidget {
+  const Trendiva({super.key});
 
   @override
   Widget build(BuildContext context) {
