@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/routing/app_router.dart';
 import 'package:nti_final_project/core/routing/routes.dart';
+import 'package:nti_final_project/features/auth/presentation/views/forget_password.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Trendiva',
-        initialRoute: Routes.loginView,
+        // initialRoute: Routes.loginView,
+        home:  ForgotPasswordScreen(),
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );
