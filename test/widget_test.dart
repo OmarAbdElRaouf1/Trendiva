@@ -6,7 +6,7 @@ void main() {
   testWidgets('App boots and shows the login screen', (
     WidgetTester tester,
   ) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(Trendiva());
     await tester.pumpAndSettle();
 
     expect(find.text('Login'), findsWidgets);
