@@ -113,5 +113,65 @@ abstract class AppTextStyles {
     color: AppColors.greyTextColor,
     fontSize: 14.sp,
     height: 1.4,
-  ); 
+  );
+
+  static const TextStyle profileAppBarTitle = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    color: AppColors.darkGreenColor,
+  );
+
+  static const TextStyle profileName = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w700,
+    color: AppColors.textPrimaryColor,
+  );
+
+  static const TextStyle profileEmail = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondaryColor,
+  );
+
+  static const TextStyle profileSectionTitle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textMutedColor,
+  );
+
+  static const TextStyle profileItemTitle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textPrimaryColor,
+  );
+
+  static const TextStyle profileItemDescription = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textSecondaryColor,
+  );
+
+  static const TextStyle profileStatsNumber = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+    color: AppColors.darkGreenColor,
+  );
+
+  static const TextStyle profileStatsLabel = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textMutedColor,
+  );
+
+  static const TextStyle profileLogout = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: AppColors.logoutRedColor,
+  );
+
+  static const TextStyle profileVersion = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textSecondaryColor,
+  );
 }
