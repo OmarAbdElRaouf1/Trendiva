@@ -1,4 +1,4 @@
-# nti_final_project
+# Trendiva
 
 A new Flutter project.
 

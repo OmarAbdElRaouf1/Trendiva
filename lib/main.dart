@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/routing/app_router.dart';
-import 'package:nti_final_project/features/aboutUs/presentation/views/about_us_view.dart';
-import 'package:nti_final_project/features/aboutUs/presentation/views/changePass._page.dart';
+import 'package:nti_final_project/core/routing/routes.dart';
+import 'package:nti_final_project/features/auth/presentation/views/forget_password_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Trendiva());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Trendiva extends StatelessWidget {
+  const Trendiva({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-     // home: AboutUsView(),
-      //change(),
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      title: 'Flutter Demo',
+    return ScreenUtilPlusInit(
+      designSize: const Size(360, 884),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Trendiva',
+        initialRoute: Routes.loginView,
+
+        onGenerateRoute: AppRouter.onGenerateRoute,
+      ),
     );
   }
 }
