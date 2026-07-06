@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 
 class PasswordStrength extends StatelessWidget {
@@ -26,11 +28,9 @@ class PasswordStrength extends StatelessWidget {
             ),
           ),
         ),
-
-        const SizedBox(height: 6),
-
+        Gap(6.h),
         Text(
-          "Password Strength : Weak",
+          'Password Strength : Weak',
           style: TextStyle(color: Colors.grey.shade600),
         ),
       ],

@@ -4,7 +4,8 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/helpers/extensions.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_click.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_icon.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_text_field.dart';
+import 'package:nti_final_project/core/widgets/custom_text_field.dart';
+import 'package:nti_final_project/features/auth/presentation/widgets/success_dialog.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   ForgetPasswordView({super.key});
@@ -46,7 +47,7 @@ class ForgetPasswordView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 5),
                     ),
@@ -71,7 +72,7 @@ class ForgetPasswordView extends StatelessWidget {
                     ),
                     Gap(30.h),
                     // Enter Email
-                    AuthTextField(
+                    CustomTextField(
                       label: 'Email Address',
                       hint: 'name@example.com',
                       controller: emailController,
@@ -82,7 +83,12 @@ class ForgetPasswordView extends StatelessWidget {
                     // submitButton
                     AuthButtonClick(
                       text: 'Send Reset Link',
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => const SuccessDialog(),
+                        );
+                      },
                       icon: Icons.arrow_forward,
                     ),
                     Gap(20.h),

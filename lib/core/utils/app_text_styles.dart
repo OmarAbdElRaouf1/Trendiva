@@ -174,4 +174,90 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.textSecondaryColor,
   );
+
+  static const TextStyle aboutHeroTag = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 1.2,
+    color: AppColors.darkGreenColor,
+  );
+
+  static TextStyle aboutHeroTitle = TextStyle(
+    fontSize: 40.sp,
+    fontWeight: FontWeight.w400,
+    color: AppColors.darkGreenColor,
+  );
+
+  static TextStyle aboutHeroTitleBold = TextStyle(
+    fontSize: 40.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.primaryColor,
+  );
+
+  static const TextStyle aboutSectionTitle = TextStyle(
+    fontSize: 28,
+    fontWeight: FontWeight.w700,
+    color: AppColors.primaryColor,
+  );
+
+  static const TextStyle aboutBodyText = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    height: 1.5,
+    color: AppColors.textMutedColor,
+  );
+
+  static const TextStyle aboutContactTitle = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryColor,
+  );
+
+  static const TextStyle aboutContactText = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPrimaryColor,
+  );
+
+  static const TextStyle aboutFooterTag = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primaryColor,
+  );
+
+  static const TextStyle aboutCopyright = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textSecondaryColor,
+  );
+
+  static const TextStyle changePasswordTitle = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w700,
+    color: AppColors.primaryColor,
+  );
+
+  static const TextStyle changePasswordSubtitle = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textSecondaryColor,
+  );
+
+  static const TextStyle passwordRequirementText = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPrimaryColor,
+  );
+
+  static const TextStyle successDialogTitle = TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    color: AppColors.neutralColor,
+  );
+
+  static TextStyle successDialogText = TextStyle(
+    fontSize: 16.sp,
+    height: 1.4,
+    color: AppColors.textMutedColor,
+  );
 }

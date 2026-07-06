@@ -4,11 +4,11 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/helpers/extensions.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
-import '../widgets/auth_button.dart';
+import '../../../../core/widgets/custom_button.dart';
 import '../widgets/auth_header.dart';
 import '../widgets/auth_password_field.dart';
 import '../widgets/auth_switch_text.dart';
-import '../widgets/auth_text_field.dart';
+import '../../../../core/widgets/custom_text_field.dart';
 import '../widgets/terms_checkbox.dart';
 
 class SignupView extends StatefulWidget {
@@ -58,14 +58,14 @@ class _SignupViewState extends State<SignupView> {
                   style: AppTextStyles.authSubtitle,
                 ),
                 Gap(28.h),
-                AuthTextField(
+                CustomTextField(
                   label: 'Full Name',
                   hint: 'Alexander McQueen',
                   controller: nameController,
                   verticalPadding: 17,
                 ),
                 Gap(18.h),
-                AuthTextField(
+                CustomTextField(
                   label: 'Email',
                   hint: 'alex@trendiva.com',
                   controller: emailController,
@@ -98,7 +98,7 @@ class _SignupViewState extends State<SignupView> {
                   onChanged: (value) => setState(() => agree = value ?? false),
                 ),
                 Gap(28.h),
-                AuthButton(
+                CustomButton(
                   text: 'Create Account',
                   onPressed: () {},
                   icon: Icons.arrow_forward,

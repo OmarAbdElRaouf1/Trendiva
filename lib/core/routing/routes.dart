@@ -6,4 +6,5 @@ class Routes {
   static const String productDetails = 'productDetails';
   static const String forgetPasswordView = 'forgetPasswordView';
   static const String signupView = 'signupView';
+  static const String aboutUsView = 'aboutUsView';
 }

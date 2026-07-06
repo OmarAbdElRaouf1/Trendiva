@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nti_final_project/features/aboutUs/presentation/views/about_us_view.dart';
 import 'package:nti_final_project/features/auth/presentation/views/forget_password_view.dart';
 import 'package:nti_final_project/features/auth/presentation/views/login_view.dart';
 import 'package:nti_final_project/features/auth/presentation/views/signup_view.dart';
@@ -33,6 +34,9 @@ class AppRouter {
 
       case Routes.forgetPasswordView:
         return MaterialPageRoute(builder: (_) => ForgetPasswordView());
+
+      case Routes.aboutUsView:
+        return MaterialPageRoute(builder: (_) => const AboutUsView());
 
       default:
         return MaterialPageRoute(builder: (_) => const SplashView());

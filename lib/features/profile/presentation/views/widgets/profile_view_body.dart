@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:nti_final_project/core/helpers/extensions.dart';
+import 'package:nti_final_project/core/routing/routes.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
 import 'package:nti_final_project/features/profile/presentation/views/widgets/logout_button.dart';
@@ -54,7 +56,7 @@ class ProfileViewBody extends StatelessWidget {
               ],
             ),
             Gap(32.h),
-            const ProfileSection(
+            ProfileSection(
               title: 'SUPPORT',
               titleSpacing: 8,
               children: [
@@ -69,6 +71,9 @@ class ProfileViewBody extends StatelessWidget {
                 SupportItem(
                   icon: 'assets/icons/profile_icons/about_us.svg',
                   title: 'About Us',
+                  onTap: () {
+                    context.pushNamed(Routes.aboutUsView);
+                  },
                 ),
                 SupportItem(
                   icon: 'assets/icons/profile_icons/contact_us.svg',
