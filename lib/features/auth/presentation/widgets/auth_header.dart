@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
 import 'auth_logo.dart';
 
@@ -18,12 +20,12 @@ class AuthHeader extends StatelessWidget {
     return Column(
       children: [
         const AuthLogo(size: 58, radius: 16),
-        const SizedBox(height: 14),
+        Gap(14.h),
         Text(
           'Trendiva',
           style: AppTextStyles.authLogoTitle,
         ),
-        const SizedBox(height: 6),
+        Gap(6.h),
         Text(
           'Curating your sophisticated style.',
           style: AppTextStyles.authSmallText,
@@ -36,7 +38,7 @@ class AuthHeader extends StatelessWidget {
     return Row(
       children: [
         const AuthLogo(size: 32, radius: 9),
-        const SizedBox(width: 8),
+        Gap(8.w),
         Text(
           'Trendiva',
           style: AppTextStyles.authLogoTitle.copyWith(

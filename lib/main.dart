@@ -4,13 +4,14 @@ import 'package:nti_final_project/core/routing/app_router.dart';
 import 'package:nti_final_project/core/routing/routes.dart';
 import 'package:nti_final_project/features/auth/presentation/views/forget_password.dart';
 import 'package:nti_final_project/features/auth/presentation/views/otp_screen.dart';
+import 'package:nti_final_project/features/aboutUs/presentation/views/about_us_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Trendiva());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Trendiva extends StatelessWidget {
+  const Trendiva({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
         title: 'Trendiva',
         // initialRoute: Routes.loginView,
         home:  OtpVerificationScreen(),
+
+        initialRoute: Routes.loginView,
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );

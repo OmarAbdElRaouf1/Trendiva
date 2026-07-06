@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'auth_text_field.dart';
+import '../../../../core/widgets/custom_text_field.dart';
 
 class AuthPasswordField extends StatelessWidget {
   final String label;
@@ -25,7 +25,7 @@ class AuthPasswordField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AuthTextField(
+    return CustomTextField(
       label: label,
       hint: hint,
       controller: controller,

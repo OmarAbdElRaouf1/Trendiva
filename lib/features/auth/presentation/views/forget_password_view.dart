@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:nti_final_project/core/helpers/extensions.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_click.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_icon.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_text_field.dart';
+import 'package:nti_final_project/core/widgets/custom_text_field.dart';
+import 'package:nti_final_project/features/auth/presentation/widgets/success_dialog.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  ForgotPasswordScreen({Key? key}) : super(key: key);
+class ForgetPasswordView extends StatelessWidget {
+  ForgetPasswordView({super.key});
   final TextEditingController emailController = TextEditingController();
 
   @override
@@ -27,10 +31,15 @@ class ForgotPasswordScreen extends StatelessWidget {
                       color: Color(0xFF00342B),
                     ),
                   ),
-                  IconButton(icon: const Icon(Icons.close), onPressed: () {}),
+                  IconButton(
+                    icon: const Icon(Icons.close),
+                    onPressed: () {
+                      context.pop();
+                    },
+                  ),
                 ],
               ),
-              const SizedBox(height: 40),
+              Gap(40.h),
               Container(
                 padding: const EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
@@ -38,7 +47,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.black.withValues(alpha: 0.1),
                       blurRadius: 10,
                       offset: const Offset(0, 5),
                     ),
@@ -55,33 +64,40 @@ class ForgotPasswordScreen extends StatelessWidget {
                         color: Color(0xFF004333),
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    Gap(10.h),
                     const Text(
                       'No worries! Enter the email address associated with your account and we\'ll send a link to reset your password.',
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Color(0xff3F4945), height: 1.4),
                     ),
-                    const SizedBox(height: 30),
+                    Gap(30.h),
                     // Enter Email
-                    AuthTextField(
+                    CustomTextField(
                       label: 'Email Address',
                       hint: 'name@example.com',
                       controller: emailController,
                       prefixIcon: Icons.email_outlined,
                       keyboardType: TextInputType.emailAddress,
                     ),
-                    const SizedBox(height: 24),
+                    Gap(24.h),
                     // submitButton
                     AuthButtonClick(
                       text: 'Send Reset Link',
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => const SuccessDialog(),
+                        );
+                      },
                       icon: Icons.arrow_forward,
                     ),
-                    const SizedBox(height: 20),
+                    Gap(20.h),
                     //backButton
                     AuthButtonIcon(
                       text: 'Back to Login',
-                      onPressed: () {},
+                      onPressed: () {
+                        context.pop();
+                      },
                       icon: Icons.arrow_back,
                     ),
                   ],

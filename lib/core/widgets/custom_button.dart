@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
 
-class AuthButton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
   final IconData? icon;
   final double height;
   final double shadowAlpha;
 
-  const AuthButton({
+  const CustomButton({
     super.key,
     required this.text,
     required this.onPressed,
@@ -30,7 +32,7 @@ class AuthButton extends StatelessWidget {
           foregroundColor: AppColors.whiteColor,
           shadowColor: AppColors.primaryColor.withValues(alpha: shadowAlpha),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(25.r),
           ),
         ),
         child: icon == null
@@ -39,7 +41,7 @@ class AuthButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(text, style: AppTextStyles.authButton),
-                  const SizedBox(width: 8),
+                  Gap(8.w),
                   Icon(icon, size: 18),
                 ],
               ),

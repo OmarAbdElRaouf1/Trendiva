@@ -27,7 +27,7 @@ class CategoriesSection extends StatelessWidget {
             child: Text('View All', style: AppTextStyles.linkText),
           ),
         ),
-        Gap(16),
+        Gap(16.h),
 
         SizedBox(
           height: 100.h,
