@@ -4,14 +4,14 @@ import 'package:nti_final_project/core/utils/app_colors.dart';
 
 abstract class AppTextStyles {
   static TextStyle appTitle = TextStyle(
-    fontSize: 22,
+    fontSize: 22.sp,
     fontWeight: FontWeight.w700,
     letterSpacing: 0.5,
     color: AppColors.neutralColor,
   );
 
   static TextStyle sectionTitle = TextStyle(
-    fontSize: 20,
+    fontSize: 20.sp,
     fontWeight: FontWeight.w600,
     color: AppColors.neutralColor,
   );
@@ -64,7 +64,7 @@ abstract class AppTextStyles {
   );
 
   static TextStyle productPrice = TextStyle(
-    color: Color(0xff003D34),
+    color: AppColors.accentColor,
     fontSize: 16.sp,
     fontWeight: FontWeight.bold,
   );
