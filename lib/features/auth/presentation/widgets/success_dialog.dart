@@ -50,7 +50,7 @@ class SuccessDialog extends StatelessWidget {
             CustomButton(
               text: 'Back to Login',
               onPressed: () {
-                context.pushReplacementNamed(Routes.loginView);
+                context.pushAndRemoveUntil(Routes.loginView);
               },
             ),
           ],

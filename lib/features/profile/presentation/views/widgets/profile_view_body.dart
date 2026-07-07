@@ -38,10 +38,13 @@ class ProfileViewBody extends StatelessWidget {
             ProfileSection(
               title: 'PREFERENCES & ACCOUNT',
               children: [
-                const PreferenceItem(
+                PreferenceItem(
                   icon: 'assets/icons/profile_icons/acc_settings.svg',
                   title: 'Account Settings',
                   description: 'Change Password, Security',
+                  onTap: () {
+                    context.pushNamed(Routes.changePasswordView);
+                  },
                 ),
                 PreferenceItem(
                   icon: 'assets/icons/profile_icons/theme.svg',

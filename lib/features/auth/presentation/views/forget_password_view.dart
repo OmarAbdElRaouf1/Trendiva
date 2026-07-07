@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/helpers/extensions.dart';
+import 'package:nti_final_project/core/routing/routes.dart';
+import 'package:nti_final_project/features/auth/presentation/widgets/auth_app_bar.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_click.dart';
 import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_icon.dart';
 import 'package:nti_final_project/core/widgets/custom_text_field.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/success_dialog.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   ForgetPasswordView({super.key});
@@ -20,25 +21,7 @@ class ForgetPasswordView extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Trendiva',
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF00342B),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.close),
-                    onPressed: () {
-                      context.pop();
-                    },
-                  ),
-                ],
-              ),
+              const AuthAppBar(),
               Gap(40.h),
               Container(
                 padding: const EdgeInsets.all(20.0),
@@ -84,10 +67,7 @@ class ForgetPasswordView extends StatelessWidget {
                     AuthButtonClick(
                       text: 'Send Reset Link',
                       onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => const SuccessDialog(),
-                        );
+                        context.pushNamed(Routes.otpView);
                       },
                       icon: Icons.arrow_forward,
                     ),

@@ -11,11 +11,13 @@ class PreferenceItem extends StatelessWidget {
     required this.title,
     required this.description,
     this.trailing,
+    this.onTap,
   });
 
   final String icon;
   final String title;
   final String description;
+  final VoidCallback? onTap;
 
   /// Shown at the end of the row; defaults to the chevron icon.
   final Widget? trailing;
@@ -24,20 +26,23 @@ class PreferenceItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      child: Row(
-        children: [
-          SvgPicture.asset(icon),
-          Gap(24.w),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title, style: AppTextStyles.profileItemTitle),
-              Text(description, style: AppTextStyles.profileItemDescription),
-            ],
-          ),
-          const Spacer(),
-          trailing ?? SvgPicture.asset('assets/icons/profile_icons/show.svg'),
-        ],
+      child: InkWell(
+        onTap: onTap,
+        child: Row(
+          children: [
+            SvgPicture.asset(icon),
+            Gap(24.w),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: AppTextStyles.profileItemTitle),
+                Text(description, style: AppTextStyles.profileItemDescription),
+              ],
+            ),
+            const Spacer(),
+            trailing ?? SvgPicture.asset('assets/icons/profile_icons/show.svg'),
+          ],
+        ),
       ),
     );
   }

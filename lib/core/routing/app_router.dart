@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nti_final_project/features/aboutUs/presentation/views/about_us_view.dart';
+import 'package:nti_final_project/features/auth/presentation/views/change_password_view.dart';
 import 'package:nti_final_project/features/auth/presentation/views/forget_password_view.dart';
 import 'package:nti_final_project/features/auth/presentation/views/login_view.dart';
+import 'package:nti_final_project/features/auth/presentation/views/otp_screen.dart';
 import 'package:nti_final_project/features/auth/presentation/views/signup_view.dart';
 import 'package:nti_final_project/features/home/data/models/product_model.dart';
 import 'package:nti_final_project/features/home/presentation/views/home_view.dart';
@@ -34,6 +36,11 @@ class AppRouter {
 
       case Routes.forgetPasswordView:
         return MaterialPageRoute(builder: (_) => ForgetPasswordView());
+
+      case Routes.otpView:
+        return MaterialPageRoute(builder: (_) => const OtpVerificationScreen());
+      case Routes.changePasswordView:
+        return MaterialPageRoute(builder: (_) => const ChangePasswordView());
 
       case Routes.aboutUsView:
         return MaterialPageRoute(builder: (_) => const AboutUsView());
