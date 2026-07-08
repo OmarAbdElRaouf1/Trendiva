@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/features/home/presentation/views/widgets/categories_section.dart';
 import 'package:nti_final_project/features/home/presentation/views/widgets/home_app_bar.dart';
@@ -17,13 +18,13 @@ class HomeViewBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const HomeAppBar(),
-          const SizedBox(height: 16),
+          Gap(16.h),
           const HomeSearchBar(),
-          const SizedBox(height: 20),
+          Gap(20.h),
           const PromoBannerSection(),
-          const SizedBox(height: 28),
+          Gap(28.h),
           const CategoriesSection(),
-          const SizedBox(height: 28),
+          Gap(28.h),
           const ProductsGridSection(),
         ],
       ),

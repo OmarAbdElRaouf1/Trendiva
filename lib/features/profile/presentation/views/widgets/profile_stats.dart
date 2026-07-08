@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+import 'package:nti_final_project/core/utils/app_colors.dart';
+import 'package:nti_final_project/core/utils/app_text_styles.dart';
+
+class ProfileStats extends StatelessWidget {
+  const ProfileStats({
+    super.key,
+    required this.numOfStats,
+    required this.textOfStats,
+  });
+
+  final String numOfStats;
+  final String textOfStats;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 88,
+      width: 100,
+      decoration: BoxDecoration(
+        color: AppColors.statsBackgroundColor,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(numOfStats, style: AppTextStyles.profileStatsNumber),
+          Text(textOfStats, style: AppTextStyles.profileStatsLabel),
+        ],
+      ),
+    );
+  }
+}

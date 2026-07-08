@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
 
-class AuthTextField extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final String label;
   final String hint;
   final TextEditingController controller;
@@ -13,7 +15,7 @@ class AuthTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final double verticalPadding;
 
-  const AuthTextField({
+  const CustomTextField({
     super.key,
     required this.label,
     required this.hint,
@@ -40,7 +42,7 @@ class AuthTextField extends StatelessWidget {
                   labelTrailing!,
                 ],
               ),
-        const SizedBox(height: 8),
+        Gap(8.h),
         TextField(
           controller: controller,
           obscureText: obscureText,
@@ -51,11 +53,7 @@ class AuthTextField extends StatelessWidget {
             hintStyle: AppTextStyles.authHint,
             prefixIcon: prefixIcon == null
                 ? null
-                : Icon(
-                    prefixIcon,
-                    size: 20,
-                    color: Colors.black54,
-                  ),
+                : Icon(prefixIcon, size: 20, color: Colors.black54),
             suffixIcon: suffixIcon,
             filled: true,
             fillColor: AppColors.authFieldColor,

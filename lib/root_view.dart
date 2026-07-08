@@ -4,6 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/features/cart/presentation/views/cart_view.dart';
 import 'package:nti_final_project/features/home/presentation/views/home_view.dart';
+import 'package:nti_final_project/features/profile/presentation/views/profile_view.dart';
 
 class RootView extends StatefulWidget {
   const RootView({super.key});
@@ -13,31 +14,33 @@ class RootView extends StatefulWidget {
 }
 
 class _RootViewState extends State<RootView> {
-  late final PageController pageController;
-  late final List<Widget> screens;
-  int currentIndex = 0;
+  late final PageController _pageController;
+
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = const [
+    HomeView(),
+    CartView(),
+    Placeholder(),
+    ProfileView(),
+  ];
 
   @override
   void initState() {
     super.initState();
-    pageController = PageController(initialPage: currentIndex);
-    screens = [
-      HomeView(),
-      const CartView(),
-      const Placeholder(),
-      const Placeholder(),
-    ];
+    _pageController = PageController(initialPage: _currentIndex);
   }
 
   @override
   void dispose() {
-    pageController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
   void _onTabChange(int index) {
-    setState(() => currentIndex = index);
-    pageController.animateToPage(
+    setState(() => _currentIndex = index);
+
+    _pageController.animateToPage(
       index,
       duration: const Duration(milliseconds: 350),
       curve: Curves.easeOutCubic,
@@ -49,15 +52,17 @@ class _RootViewState extends State<RootView> {
     return Scaffold(
       extendBody: true,
       body: PageView(
-        physics: NeverScrollableScrollPhysics(),
-        controller: pageController,
-        onPageChanged: (index) => setState(() => currentIndex = index),
-        children: screens,
+        controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        onPageChanged: (index) {
+          setState(() => _currentIndex = index);
+        },
+        children: _screens,
       ),
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColors.primaryColor,
-          borderRadius: const BorderRadius.only(
+          borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
@@ -67,7 +72,7 @@ class _RootViewState extends State<RootView> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: GNav(
-              selectedIndex: currentIndex,
+              selectedIndex: _currentIndex,
               onTabChange: _onTabChange,
               gap: 8,
               color: Colors.white,
@@ -78,16 +83,16 @@ class _RootViewState extends State<RootView> {
               curve: Curves.easeOutCubic,
               duration: const Duration(milliseconds: 350),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              textStyle: TextStyle(
+              textStyle: const TextStyle(
                 color: AppColors.primaryColor,
                 fontWeight: FontWeight.bold,
                 fontSize: 13,
               ),
               tabs: const [
-                GButton(icon: CupertinoIcons.home, text: "Home"),
-                GButton(icon: CupertinoIcons.cart, text: "Cart"),
-                GButton(icon: CupertinoIcons.clock, text: "Orders"),
-                GButton(icon: CupertinoIcons.person, text: "Profile"),
+                GButton(icon: CupertinoIcons.home, text: 'Home'),
+                GButton(icon: CupertinoIcons.cart, text: 'Cart'),
+                GButton(icon: CupertinoIcons.clock, text: 'Orders'),
+                GButton(icon: CupertinoIcons.person, text: 'Profile'),
               ],
             ),
           ),
