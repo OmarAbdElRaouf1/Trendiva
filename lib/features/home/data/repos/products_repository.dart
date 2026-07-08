@@ -1,4 +1,4 @@
-import 'package:nti_final_project/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/home/data/models/product_model.dart';
 
 class ProductsRepository {
   Future<List<ProductModel>> getProducts() async {

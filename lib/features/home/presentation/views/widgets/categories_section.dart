@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/core/utils/app_text_styles.dart';
-import 'package:nti_final_project/features/home/presentation/views/widgets/category_item.dart';
-import 'package:nti_final_project/features/home/presentation/views/widgets/section_header.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/features/home/presentation/views/widgets/category_item.dart';
+import 'package:trendiva/features/home/presentation/views/widgets/section_header.dart';
 
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key});

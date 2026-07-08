@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
-import 'package:nti_final_project/features/home/presentation/cubit/products_cubit.dart';
-import 'package:nti_final_project/features/home/presentation/cubit/products_state.dart';
-import 'package:nti_final_project/features/home/presentation/views/widgets/product_card.dart';
-import 'package:nti_final_project/features/home/presentation/views/widgets/section_header.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/features/home/presentation/cubit/products_cubit.dart';
+import 'package:trendiva/features/home/presentation/cubit/products_state.dart';
+import 'package:trendiva/features/home/presentation/views/widgets/product_card.dart';
+import 'package:trendiva/features/home/presentation/views/widgets/section_header.dart';
 
 class ProductsGridSection extends StatelessWidget {
   const ProductsGridSection({super.key});

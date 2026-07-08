@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nti_final_project/core/helpers/extensions.dart';
-import 'package:nti_final_project/core/routing/routes.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
-import 'package:nti_final_project/core/utils/app_text_styles.dart';
-import 'package:nti_final_project/core/widgets/custom_button.dart';
+import 'package:trendiva/core/helpers/extensions.dart';
+import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/core/widgets/custom_button.dart';
 
 class SuccessDialog extends StatelessWidget {
   const SuccessDialog({super.key});
@@ -50,7 +50,7 @@ class SuccessDialog extends StatelessWidget {
             CustomButton(
               text: 'Back to Login',
               onPressed: () {
-                context.pushReplacementNamed(Routes.loginView);
+                context.pushAndRemoveUntil(Routes.loginView);
               },
             ),
           ],

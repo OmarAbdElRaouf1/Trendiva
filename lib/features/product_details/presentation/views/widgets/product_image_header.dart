@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/core/helpers/extensions.dart';
-import 'package:nti_final_project/features/home/presentation/views/widgets/custom_icon_button.dart';
+import 'package:trendiva/core/helpers/extensions.dart';
+import 'package:trendiva/features/home/presentation/views/widgets/custom_icon_button.dart';
 
 class ProductImageHeader extends StatelessWidget {
   const ProductImageHeader({super.key, required this.image});

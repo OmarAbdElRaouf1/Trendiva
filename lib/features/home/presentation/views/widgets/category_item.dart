@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
-import 'package:nti_final_project/core/utils/app_text_styles.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({super.key, required this.icon, required this.label});
