@@ -16,14 +16,31 @@ import 'routes.dart';
 class AppRouter {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.homeView:
-        return MaterialPageRoute(builder: (_) => const HomeView());
+
+      case Routes.splashView:
+        return MaterialPageRoute(
+          builder: (_) => const SplashView(),
+        );
+
+      case Routes.onBoardingView:
+        return MaterialPageRoute(
+          builder: (_) => const OnBoardingView(),
+        );
 
       case Routes.loginView:
-        return MaterialPageRoute(builder: (_) => const LoginView());
+        return MaterialPageRoute(
+          builder: (_) => const LoginView(),
+        );
 
       case Routes.signupView:
-        return MaterialPageRoute(builder: (_) => const SignupView());
+        return MaterialPageRoute(
+          builder: (_) => const SignupView(),
+        );
+
+      case Routes.homeView:
+        return MaterialPageRoute(
+          builder: (_) => const HomeView(),
+        );
 
       case Routes.productDetails:
         final product = settings.arguments as ProductModel;
@@ -32,7 +49,9 @@ class AppRouter {
         );
 
       case Routes.rootView:
-        return MaterialPageRoute(builder: (_) => const RootView());
+        return MaterialPageRoute(
+          builder: (_) => const RootView(),
+        );
 
       case Routes.forgetPasswordView:
         return MaterialPageRoute(builder: (_) => ForgetPasswordView());
@@ -46,7 +65,9 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const AboutUsView());
 
       default:
-        return MaterialPageRoute(builder: (_) => const SplashView());
+        return MaterialPageRoute(
+          builder: (_) => const SplashView(),
+        );
     }
   }
 }

@@ -8,5 +8,6 @@ class Routes {
   static const String changePasswordView = 'changePasswordView';
   static const String otpView = 'otpView';
   static const String signupView = 'signupView';
+  static const String onBoardingView = 'onBoardingView';
   static const String aboutUsView = 'aboutUsView';
 }
