@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/core/helpers/extensions.dart';
+import 'package:trendiva/core/helpers/extensions.dart';
 
 class AuthAppBar extends StatelessWidget {
   const AuthAppBar({super.key});

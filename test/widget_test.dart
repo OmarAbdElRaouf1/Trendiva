@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:nti_final_project/main.dart';
+import 'package:trendiva/main.dart';
 
 void main() {
   testWidgets('App boots and shows the login screen', (

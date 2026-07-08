@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
-import 'package:nti_final_project/features/cart/presentation/views/cart_view.dart';
-import 'package:nti_final_project/features/home/presentation/views/home_view.dart';
-import 'package:nti_final_project/features/profile/presentation/views/profile_view.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/features/cart/presentation/views/cart_view.dart';
+import 'package:trendiva/features/home/presentation/views/home_view.dart';
+import 'package:trendiva/features/profile/presentation/views/profile_view.dart';
 
 class RootView extends StatefulWidget {
   const RootView({super.key});
@@ -18,12 +18,7 @@ class _RootViewState extends State<RootView> {
 
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [
-    HomeView(),
-    CartView(),
-    Placeholder(),
-    ProfileView(),
-  ];
+  final List<Widget> _screens = const [HomeView(), CartView(), ProfileView()];
 
   @override
   void initState() {
@@ -91,7 +86,6 @@ class _RootViewState extends State<RootView> {
               tabs: const [
                 GButton(icon: CupertinoIcons.home, text: 'Home'),
                 GButton(icon: CupertinoIcons.cart, text: 'Cart'),
-                GButton(icon: CupertinoIcons.clock, text: 'Orders'),
                 GButton(icon: CupertinoIcons.person, text: 'Profile'),
               ],
             ),

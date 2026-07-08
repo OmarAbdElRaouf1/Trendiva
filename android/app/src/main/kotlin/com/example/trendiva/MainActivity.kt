@@ -1,4 +1,4 @@
-package com.example.nti_final_project
+package com.example.trendiva
 
 import io.flutter.embedding.android.FlutterActivity
 

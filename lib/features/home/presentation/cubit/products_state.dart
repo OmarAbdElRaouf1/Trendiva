@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:nti_final_project/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/home/data/models/product_model.dart';
 
 sealed class ProductsState extends Equatable {
   const ProductsState();

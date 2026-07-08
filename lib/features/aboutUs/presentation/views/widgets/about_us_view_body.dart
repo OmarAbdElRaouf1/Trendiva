@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/features/aboutUs/presentation/views/widgets/about_features_section.dart';
-import 'package:nti_final_project/features/aboutUs/presentation/views/widgets/about_us_footer.dart';
-import 'package:nti_final_project/features/aboutUs/presentation/views/widgets/about_us_hero.dart';
-import 'package:nti_final_project/features/aboutUs/presentation/views/widgets/contact_info_section.dart';
-import 'package:nti_final_project/features/aboutUs/presentation/views/widgets/our_story_section.dart';
+import 'package:trendiva/features/aboutUs/presentation/views/widgets/about_features_section.dart';
+import 'package:trendiva/features/aboutUs/presentation/views/widgets/about_us_footer.dart';
+import 'package:trendiva/features/aboutUs/presentation/views/widgets/about_us_hero.dart';
+import 'package:trendiva/features/aboutUs/presentation/views/widgets/contact_info_section.dart';
+import 'package:trendiva/features/aboutUs/presentation/views/widgets/our_story_section.dart';
 
 class AboutUsViewBody extends StatelessWidget {
   const AboutUsViewBody({super.key});

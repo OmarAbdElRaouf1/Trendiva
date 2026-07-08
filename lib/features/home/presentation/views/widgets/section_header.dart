@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/core/utils/app_text_styles.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
 
 class SectionHeader extends StatelessWidget {
   const SectionHeader({super.key, required this.title, this.trailing});

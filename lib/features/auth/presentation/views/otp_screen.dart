@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/core/routing/routes.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_app_bar.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_click.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_otp_text.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_otp_text_button.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_timer.dart';
+import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_app_bar.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_button_click.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_otp_text.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_otp_text_button.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_timer.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
   const OtpVerificationScreen({super.key});

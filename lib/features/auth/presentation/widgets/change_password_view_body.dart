@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/core/utils/app_text_styles.dart';
-import 'package:nti_final_project/core/widgets/custom_button.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_password_field.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/password_requirements_card.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/password_strength.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/success_dialog.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/core/widgets/custom_button.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_password_field.dart';
+import 'package:trendiva/features/auth/presentation/widgets/password_requirements_card.dart';
+import 'package:trendiva/features/auth/presentation/widgets/password_strength.dart';
+import 'package:trendiva/features/auth/presentation/widgets/success_dialog.dart';
 
 class ChangePasswordViewBody extends StatefulWidget {
   const ChangePasswordViewBody({super.key});

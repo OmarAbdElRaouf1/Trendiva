@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
 
 class FeatureCard extends StatelessWidget {
   final IconData icon;

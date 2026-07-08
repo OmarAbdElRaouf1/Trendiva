@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/core/routing/routes.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
+import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
 import '../widgets/on_boarding_background.dart';
 import '../widgets/on_boarding_button.dart';
 import '../widgets/on_boarding_top_bar.dart';

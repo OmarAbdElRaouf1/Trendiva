@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/core/helpers/extensions.dart';
-import 'package:nti_final_project/core/routing/routes.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_app_bar.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_click.dart';
-import 'package:nti_final_project/features/auth/presentation/widgets/auth_button_icon.dart';
-import 'package:nti_final_project/core/widgets/custom_text_field.dart';
+import 'package:trendiva/core/helpers/extensions.dart';
+import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_app_bar.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_button_click.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_button_icon.dart';
+import 'package:trendiva/core/widgets/custom_text_field.dart';
 
 class ForgetPasswordView extends StatelessWidget {
   ForgetPasswordView({super.key});

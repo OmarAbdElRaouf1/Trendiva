@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
 
 abstract class AppTextStyles {
   static TextStyle appTitle = TextStyle(

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/core/helpers/extensions.dart';
-import 'package:nti_final_project/core/routing/routes.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
-import 'package:nti_final_project/core/utils/app_text_styles.dart';
-import 'package:nti_final_project/features/profile/presentation/views/widgets/logout_button.dart';
-import 'package:nti_final_project/features/profile/presentation/views/widgets/preference_item.dart';
-import 'package:nti_final_project/features/profile/presentation/views/widgets/profile_header.dart';
-import 'package:nti_final_project/features/profile/presentation/views/widgets/profile_section.dart';
-import 'package:nti_final_project/features/profile/presentation/views/widgets/profile_stats.dart';
-import 'package:nti_final_project/features/profile/presentation/views/widgets/support_item.dart';
+import 'package:trendiva/core/helpers/extensions.dart';
+import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/features/profile/presentation/views/widgets/logout_button.dart';
+import 'package:trendiva/features/profile/presentation/views/widgets/preference_item.dart';
+import 'package:trendiva/features/profile/presentation/views/widgets/profile_header.dart';
+import 'package:trendiva/features/profile/presentation/views/widgets/profile_section.dart';
+import 'package:trendiva/features/profile/presentation/views/widgets/profile_stats.dart';
+import 'package:trendiva/features/profile/presentation/views/widgets/support_item.dart';
 
 class ProfileViewBody extends StatelessWidget {
   const ProfileViewBody({super.key});

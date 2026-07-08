@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nti_final_project/core/utils/app_text_styles.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
 
 class SupportItem extends StatelessWidget {
   const SupportItem({

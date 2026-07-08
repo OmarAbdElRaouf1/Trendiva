@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/core/routing/routes.dart';
+import 'package:trendiva/core/routing/routes.dart';
 import '../widgets/splash_logo_box.dart';
 
 class SplashView extends StatefulWidget {
@@ -14,7 +14,7 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
       Navigator.pushReplacementNamed(context, Routes.onBoardingView);
     });
@@ -28,10 +28,7 @@ class _SplashViewState extends State<SplashView> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Color(0xff004D40),
-              Color(0xff003D34),
-            ],
+            colors: [Color(0xff004D40), Color(0xff003D34)],
           ),
         ),
         child: Center(

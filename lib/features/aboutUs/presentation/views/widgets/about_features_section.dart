@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_final_project/features/aboutUs/presentation/views/widgets/features_card.dart';
+import 'package:trendiva/features/aboutUs/presentation/views/widgets/features_card.dart';
 
 class AboutFeaturesSection extends StatelessWidget {
   const AboutFeaturesSection({super.key});

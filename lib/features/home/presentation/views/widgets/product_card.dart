@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:nti_final_project/core/helpers/extensions.dart';
-import 'package:nti_final_project/core/routing/routes.dart';
-import 'package:nti_final_project/core/utils/app_colors.dart';
-import 'package:nti_final_project/core/utils/app_text_styles.dart';
-import 'package:nti_final_project/features/home/data/models/product_model.dart';
-import 'package:nti_final_project/features/home/presentation/views/widgets/custom_icon_button.dart';
+import 'package:trendiva/core/helpers/extensions.dart';
+import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/home/presentation/views/widgets/custom_icon_button.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.product});
