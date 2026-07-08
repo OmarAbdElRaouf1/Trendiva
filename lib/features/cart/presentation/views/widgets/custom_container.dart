@@ -4,93 +4,117 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key});
+  const CustomContainer({
+    super.key,
+    required this.productName,
+    required this.productAsset,
+    required this.size,
+    required this.color,
+    required this.price,
+  });
+
+  final String productName;
+  final String productAsset;
+  final String size;
+  final String color;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          Image.network(
-            'https://imgs.search.brave.com/bKfbCp7iUL3gfUle_L7KTS8bnQB3y-Ev03agU0Kzqi4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly91ZmMu/Y29tL2ltYWdlcy9z/dHlsZXMvbWF0XzU5/MF94XzM4MC9zMy8y/MDIwLTEwL051cm1h/Z29tZWRvdiUyMEto/YWJpYiUyMFdlaWdo/JTIwSW4lMjAyMjkl/MjBIZXJvLmpwZz9o/PTcwOTIxMTlhJml0/b2s9Wmd1ZE5qTDE',
-            height: 160,
-            width: 128,
+    return Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
           ),
-          Gap(16.w),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Stack(
             children: [
               Row(
                 children: [
-                  Text(
-                    'Emerald Silk Slip',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFF1C1B1B),
-                    ),
-                  ),
-                  Gap(1.w),
-
-                  IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      'assets/icons/cart_icons/delete.svg',
-                    ),
+                  SvgPicture.asset(productAsset),
+                  Gap(16.w),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        productName,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF1C1B1B),
+                        ),
+                      ),
+                      Gap(1.w),
+                      Gap(4.h),
+                      Text(
+                        'Size: $size | Color: $color',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF5D5F5C),
+                        ),
+                      ),
+                      Gap(4.h),
+                      Text(
+                        '\$$price',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xFF7EBDAC),
+                        ),
+                      ),
+                      // Gap(9.h),
+                      SizedBox(
+                        height: 40.h,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(25),
+                            border: Border.all(color: Color(0xFFBFC9C4)),
+                          ),
+                          child: Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  'assets/icons/cart_icons/minus.svg',
+                                ),
+                              ),
+                              Text(
+                                '1',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xFF1C1B1B),
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: SvgPicture.asset(
+                                  'assets/icons/cart_icons/add.svg',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              Gap(4.h),
-              Text(
-                'Size: M | Color: Emerald',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF5D5F5C),
-                ),
-              ),
-              Gap(4.h),
-              Text(
-                '\$240.00',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xFF7EBDAC),
-                ),
-              ),
-              Gap(9.h),
-              Container(
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset(
-                        'assets/icons/cart_icons/minus.svg',
-                      ),
-                    ),
-                    Text(
-                      '1',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Color(0xFF1C1B1B),
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: SvgPicture.asset('assets/icons/cart_icons/add.svg'),
-                    ),
-                  ],
+              Positioned(
+                top: 0,
+                right: 0,
+                child: IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset('assets/icons/cart_icons/delete.svg'),
                 ),
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

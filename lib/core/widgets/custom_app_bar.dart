@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nti_final_project/core/utils/app_colors.dart';
 import 'package:nti_final_project/core/utils/app_text_styles.dart';
 
-class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const ProfileAppBar({super.key});
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
