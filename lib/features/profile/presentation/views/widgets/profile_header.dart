@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 
@@ -17,9 +18,31 @@ class ProfileHeader extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: AppColors.primaryColor, width: 2),
           ),
-          child: const CircleAvatar(
-            radius: 64,
-            backgroundImage: AssetImage('assets/photos/profile_photo.png'),
+          child: Stack(
+            children: [
+              const CircleAvatar(
+                radius: 64,
+                backgroundImage: AssetImage('assets/photos/profile_photo.png'),
+              ),
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: CircleAvatar(radius: 14, backgroundColor: Colors.white),
+              ),
+              Positioned(
+                right: 2,
+                bottom: 2.5,
+                child: CircleAvatar(
+                  radius: 12,
+                  backgroundColor: AppColors.darkGreenColor,
+                ),
+              ),
+              Positioned(
+                child: SvgPicture.asset(
+                  'assets/icons/profile_icons/edit_profile_photo.png',
+                ),
+              ),
+            ],
           ),
         ),
         Gap(20.h),

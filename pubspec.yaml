@@ -79,6 +79,7 @@ flutter:
     - assets/icons/navigation_bar_icons/
     - assets/icons/profile_icons/
     - assets/photos/
+    - assets/icons/cart_assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
