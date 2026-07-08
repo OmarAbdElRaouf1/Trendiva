@@ -36,7 +36,7 @@ class CartViewBody extends StatelessWidget {
           ),
           Gap(24.h),
           CustomContainer(
-            productAsset: 'assets/icons/cart_assets/emerald_slik_slip.svg',
+            productAsset: 'assets/icons/cart_assets/emerald_slik_slip.png',
             productName: 'Emerald Silk Slip',
             size: 'M',
             color: 'Emerald',
@@ -44,7 +44,7 @@ class CartViewBody extends StatelessWidget {
           ),
           Gap(24.h),
           CustomContainer(
-            productAsset: 'assets/icons/cart_assets/bone_sandals.svg',
+            productAsset: 'assets/icons/cart_assets/sandals.png',
             productName: 'Sculptural Bone\nSandals',
             size: '38',
             color: 'Bone',
@@ -52,7 +52,7 @@ class CartViewBody extends StatelessWidget {
           ),
           Gap(24.h),
           CustomContainer(
-            productAsset: 'assets/icons/cart_assets/textured_cashmere.svg',
+            productAsset: 'assets/icons/cart_assets/cashmere_knit.png',
             productName: 'Textured\nCashmere Knit',
             size: 'S',
             color: 'Ivory',

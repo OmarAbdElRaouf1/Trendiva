@@ -32,7 +32,15 @@ class CustomContainer extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SvgPicture.asset(productAsset),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(
+                      productAsset,
+                      width: 150.w,
+                      height: 150.h,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   Gap(16.w),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

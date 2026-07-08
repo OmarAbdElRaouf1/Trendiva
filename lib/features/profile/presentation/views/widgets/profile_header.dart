@@ -38,8 +38,10 @@ class ProfileHeader extends StatelessWidget {
                 ),
               ),
               Positioned(
+                right: 7,
+                bottom: 7.5,
                 child: SvgPicture.asset(
-                  'assets/icons/profile_icons/edit_profile_photo.png',
+                  'assets/icons/profile_icons/edit_profile_photo.svg',
                 ),
               ),
             ],
