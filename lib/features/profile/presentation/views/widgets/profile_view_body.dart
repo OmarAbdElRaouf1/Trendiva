@@ -41,9 +41,9 @@ class ProfileViewBody extends StatelessWidget {
                 PreferenceItem(
                   icon: 'assets/icons/profile_icons/acc_settings.svg',
                   title: 'Account Settings',
-                  description: 'Change Password, Security',
+                  description: 'Edit Photo, Name, Password',
                   onTap: () {
-                    context.pushNamed(Routes.changePasswordView);
+                    context.pushNamed(Routes.editProfileView);
                   },
                 ),
                 PreferenceItem(

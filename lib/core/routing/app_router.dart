@@ -9,6 +9,7 @@ import 'package:trendiva/features/home/data/models/product_model.dart';
 import 'package:trendiva/features/home/presentation/views/home_view.dart';
 import 'package:trendiva/features/onBoarding/presentation/views/on_boarding_view.dart';
 import 'package:trendiva/features/product_details/presentation/views/product_details_view.dart';
+import 'package:trendiva/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:trendiva/features/splash/presentation/views/splash_view.dart';
 import 'package:trendiva/root_view.dart';
 
@@ -51,6 +52,9 @@ class AppRouter {
 
       case Routes.aboutUsView:
         return MaterialPageRoute(builder: (_) => const AboutUsView());
+
+      case Routes.editProfileView:
+        return MaterialPageRoute(builder: (_) => const EditProfileView());
 
       default:
         return MaterialPageRoute(builder: (_) => const SplashView());

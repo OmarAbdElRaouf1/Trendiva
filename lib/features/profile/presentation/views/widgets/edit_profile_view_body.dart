@@ -1,0 +1,241 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_gap/flutter_gap.dart';
+import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:trendiva/core/helpers/extensions.dart';
+import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/core/widgets/custom_button.dart';
+import 'package:trendiva/core/widgets/custom_text_field.dart';
+import 'package:trendiva/features/auth/presentation/widgets/auth_password_field.dart';
+import 'package:trendiva/features/profile/data/profile_data.dart';
+import 'package:trendiva/features/profile/presentation/views/widgets/edit_profile_avatar.dart';
+
+class EditProfileViewBody extends StatefulWidget {
+  const EditProfileViewBody({super.key});
+
+  @override
+  State<EditProfileViewBody> createState() => _EditProfileViewBodyState();
+}
+
+class _EditProfileViewBodyState extends State<EditProfileViewBody> {
+  late final nameController = TextEditingController(
+    text: ProfileData.name.value,
+  );
+  late final emailController = TextEditingController(
+    text: ProfileData.email.value,
+  );
+  final newPasswordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  bool isNewPasswordHidden = true;
+  bool isConfirmPasswordHidden = true;
+  XFile? pickedPhoto;
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    newPasswordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> pickPhoto(ImageSource source) async {
+    try {
+      final photo = await ImagePicker().pickImage(
+        source: source,
+        maxWidth: 800,
+        imageQuality: 85,
+      );
+      if (photo != null) {
+        setState(() => pickedPhoto = photo);
+      }
+    } catch (_) {
+      if (mounted) {
+        showMessage('Could not open the ${source.name}', isError: true);
+      }
+    }
+  }
+
+  void showPhotoOptions() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.whiteColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (sheetContext) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Gap(12.h),
+            const Text('Change Photo', style: AppTextStyles.profileItemTitle),
+            Gap(8.h),
+            ListTile(
+              leading: const Icon(
+                Icons.photo_camera_outlined,
+                color: AppColors.darkGreenColor,
+              ),
+              title: const Text(
+                'Take Photo',
+                style: AppTextStyles.profileItemTitle,
+              ),
+              onTap: () {
+                sheetContext.pop();
+                pickPhoto(ImageSource.camera);
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                Icons.photo_library_outlined,
+                color: AppColors.darkGreenColor,
+              ),
+              title: const Text(
+                'Choose from Gallery',
+                style: AppTextStyles.profileItemTitle,
+              ),
+              onTap: () {
+                sheetContext.pop();
+                pickPhoto(ImageSource.gallery);
+              },
+            ),
+            Gap(8.h),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void showMessage(String message, {bool isError = false}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: isError
+            ? AppColors.logoutRedColor
+            : AppColors.darkGreenColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+    );
+  }
+
+  void saveChanges() {
+    final name = nameController.text.trim();
+    final email = emailController.text.trim();
+    final newPassword = newPasswordController.text;
+    final confirmPassword = confirmPasswordController.text;
+
+    if (name.isEmpty) {
+      showMessage('Please enter your name', isError: true);
+      return;
+    }
+    if (email.isEmpty || !email.contains('@')) {
+      showMessage('Please enter a valid email', isError: true);
+      return;
+    }
+    if (newPassword.isNotEmpty || confirmPassword.isNotEmpty) {
+      if (newPassword.length < 8) {
+        showMessage('Password must be at least 8 characters', isError: true);
+        return;
+      }
+      if (newPassword != confirmPassword) {
+        showMessage('Passwords do not match', isError: true);
+        return;
+      }
+    }
+
+    ProfileData.name.value = name;
+    ProfileData.email.value = email;
+    if (pickedPhoto != null) {
+      ProfileData.photo.value = File(pickedPhoto!.path);
+    }
+    context.pop();
+    showMessage('Profile updated successfully');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Gap(24.h),
+            Center(
+              child: EditProfileAvatar(
+                pickedPhoto: pickedPhoto,
+                onTap: showPhotoOptions,
+              ),
+            ),
+            Gap(8.h),
+            Center(
+              child: Text(
+                'Tap the photo to change it',
+                style: AppTextStyles.profileItemDescription,
+              ),
+            ),
+            Gap(32.h),
+            CustomTextField(
+              label: 'Full Name',
+              hint: 'Your name',
+              controller: nameController,
+              prefixIcon: Icons.person_outline,
+            ),
+            Gap(16.h),
+            CustomTextField(
+              label: 'Email',
+              hint: 'you@trendiva.com',
+              controller: emailController,
+              prefixIcon: Icons.mail_outline,
+              keyboardType: TextInputType.emailAddress,
+            ),
+            Gap(32.h),
+            const Text(
+              'CHANGE PASSWORD',
+              style: AppTextStyles.profileSectionTitle,
+            ),
+            Gap(4.h),
+            const Text(
+              'Leave empty to keep your current password.',
+              style: AppTextStyles.profileItemDescription,
+            ),
+            Gap(16.h),
+            AuthPasswordField(
+              label: 'New Password',
+              hint: '••••••••',
+              controller: newPasswordController,
+              obscureText: isNewPasswordHidden,
+              onToggle: () {
+                setState(() {
+                  isNewPasswordHidden = !isNewPasswordHidden;
+                });
+              },
+            ),
+            Gap(16.h),
+            AuthPasswordField(
+              label: 'Confirm New Password',
+              hint: '••••••••',
+              controller: confirmPasswordController,
+              obscureText: isConfirmPasswordHidden,
+              onToggle: () {
+                setState(() {
+                  isConfirmPasswordHidden = !isConfirmPasswordHidden;
+                });
+              },
+            ),
+            Gap(40.h),
+            CustomButton(
+              text: 'Save Changes',
+              icon: Icons.check,
+              onPressed: saveChanges,
+            ),
+            Gap(24.h),
+          ],
+        ),
+      ),
+    );
+  }
+}

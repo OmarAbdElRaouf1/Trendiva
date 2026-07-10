@@ -10,4 +10,5 @@ class Routes {
   static const String signupView = 'signupView';
   static const String onBoardingView = 'onBoardingView';
   static const String aboutUsView = 'aboutUsView';
+  static const String editProfileView = 'editProfileView';
 }
