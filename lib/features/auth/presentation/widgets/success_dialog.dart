@@ -9,7 +9,9 @@ import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/core/widgets/custom_button.dart';
 
 class SuccessDialog extends StatelessWidget {
-  const SuccessDialog({super.key});
+  const SuccessDialog({super.key, this.message});
+
+  final String? message;
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +43,9 @@ class SuccessDialog extends StatelessWidget {
             ),
             Gap(20.h),
             Text(
-              'Your password has been updated. You can now use your new '
-              'password to log in to your account.',
+              message ??
+                  'Your password has been updated. You can now use your new '
+                      'password to log in to your account.',
               textAlign: TextAlign.center,
               style: AppTextStyles.successDialogText,
             ),

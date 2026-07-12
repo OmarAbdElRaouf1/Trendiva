@@ -3,8 +3,10 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
+import 'package:trendiva/core/routing/routes.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/core/utils/pref_helper.dart';
 
 class LogoutButton extends StatelessWidget {
   const LogoutButton({super.key});
@@ -18,8 +20,11 @@ class LogoutButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: InkWell(
-        onTap: () {
-          context.pushAndRemoveUntil('loginView');
+        onTap: () async {
+          await PrefHelper.clearToken();
+          if (context.mounted) {
+            context.pushAndRemoveUntil(Routes.loginView);
+          }
         },
         child: Row(
           children: [

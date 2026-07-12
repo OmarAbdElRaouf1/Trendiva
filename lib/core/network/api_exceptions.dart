@@ -77,12 +77,6 @@ class ApiExceptions {
   static String? _extractServerMessage(dynamic data) {
     if (data is! Map) return null;
 
-    final message = data['message'] ?? data['error'];
-
-    if (message is String && message.trim().isNotEmpty) {
-      return message;
-    }
-
     final errors = data['errors'];
 
     if (errors is Map && errors.isNotEmpty) {
@@ -95,6 +89,12 @@ class ApiExceptions {
       if (firstError is String) {
         return firstError;
       }
+    }
+
+    final message = data['message'] ?? data['error'];
+
+    if (message is String && message.trim().isNotEmpty) {
+      return message;
     }
 
     return null;

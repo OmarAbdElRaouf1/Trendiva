@@ -5,7 +5,9 @@ import 'package:trendiva/core/network/dio_client.dart';
 import 'api_exceptions.dart';
 
 class ApiService {
-  final DioClient _dioClient = DioClient();
+  ApiService(this._dioClient);
+
+  final DioClient _dioClient;
   //Get Method
   Future<dynamic> get(String endpoint) async {
     try {

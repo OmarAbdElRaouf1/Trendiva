@@ -43,12 +43,21 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const RootView());
 
       case Routes.forgetPasswordView:
-        return MaterialPageRoute(builder: (_) => ForgetPasswordView());
+        return MaterialPageRoute(builder: (_) => const ForgetPasswordView());
 
       case Routes.otpView:
-        return MaterialPageRoute(builder: (_) => const OtpVerificationScreen());
+        final args = settings.arguments as OtpScreenArgs;
+        return MaterialPageRoute(
+          builder: (_) => OtpVerificationScreen(args: args),
+        );
       case Routes.changePasswordView:
-        return MaterialPageRoute(builder: (_) => const ChangePasswordView());
+        final args = settings.arguments as Map<String, String>;
+        return MaterialPageRoute(
+          builder: (_) => ChangePasswordView(
+            email: args['email']!,
+            otp: args['otp']!,
+          ),
+        );
 
       case Routes.aboutUsView:
         return MaterialPageRoute(builder: (_) => const AboutUsView());

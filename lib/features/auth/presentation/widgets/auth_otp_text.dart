@@ -35,7 +35,7 @@ class AuthOtpText extends StatelessWidget {
         const SizedBox(height: 8),
 
         const Text(
-          'Enter the 4-digit code sent to your\nemail.',
+          'Enter the 6-digit code sent to your\nemail.',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 14,

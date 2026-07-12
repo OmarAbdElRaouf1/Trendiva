@@ -4,10 +4,31 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 
 class PasswordStrength extends StatelessWidget {
-  const PasswordStrength({super.key});
+  const PasswordStrength({super.key, required this.password});
+
+  final String password;
+
+  static const _labels = ['Weak', 'Weak', 'Fair', 'Good', 'Strong'];
+  static const _colors = [
+    Color(0xffB3261E),
+    Color(0xffB3261E),
+    Color(0xffF9A825),
+    Color(0xff2E7D32),
+    Color(0xff1B5E20),
+  ];
+
+  int get _score {
+    if (password.isEmpty) return 0;
+    var score = 1;
+    if (password.length >= 8) score++;
+    if (RegExp(r'[0-9]').hasMatch(password)) score++;
+    if (RegExp(r'[!@#$%^&*(),.?":{}|<>]').hasMatch(password)) score++;
+    return score.clamp(0, 4);
+  }
 
   @override
   Widget build(BuildContext context) {
+    final score = _score;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -19,8 +40,8 @@ class PasswordStrength extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 4),
                 height: 5,
                 decoration: BoxDecoration(
-                  color: index == 0
-                      ? AppColors.neutralColor
+                  color: index < score
+                      ? _colors[score]
                       : AppColors.tertiaryColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -30,7 +51,7 @@ class PasswordStrength extends StatelessWidget {
         ),
         Gap(6.h),
         Text(
-          'Password Strength : Weak',
+          'Password Strength : ${_labels[score]}',
           style: TextStyle(color: Colors.grey.shade600),
         ),
       ],

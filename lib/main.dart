@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
+import 'package:trendiva/core/di/service_locator.dart';
 import 'package:trendiva/core/routing/app_router.dart';
 import 'package:trendiva/core/routing/routes.dart';
 
 void main() {
+  setupServiceLocator();
   runApp(const Trendiva());
 }
 

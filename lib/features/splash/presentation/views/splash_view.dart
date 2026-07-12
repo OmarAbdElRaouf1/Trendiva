@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/core/utils/pref_helper.dart';
 import '../widgets/splash_logo_box.dart';
 
 class SplashView extends StatefulWidget {
@@ -14,9 +15,15 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () async {
       if (!mounted) return;
-      Navigator.pushReplacementNamed(context, Routes.onBoardingView);
+      final token = await PrefHelper.getToken();
+      if (!mounted) return;
+      final isLoggedIn = token != null && token.isNotEmpty;
+      Navigator.pushReplacementNamed(
+        context,
+        isLoggedIn ? Routes.rootView : Routes.onBoardingView,
+      );
     });
   }
 
