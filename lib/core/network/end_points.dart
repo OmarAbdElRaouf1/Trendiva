@@ -6,4 +6,8 @@ class EndPoints {
   static const String verifyEmail = '/api/auth/verify-email';
   static const String resendOtp = '/api/auth/resend-otp';
   static const String resetPassword = '/api/auth/reset-password';
+
+  static const String products = '/api/products';
+  static const String categories = '/api/categories';
+  static const String offers = '/api/offers';
 }

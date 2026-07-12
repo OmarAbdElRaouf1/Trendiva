@@ -21,7 +21,7 @@ class Trendiva extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Trendiva',
-        initialRoute: Routes.splashView,
+        initialRoute: Routes.rootView,
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );

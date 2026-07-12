@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/features/cart/presentation/views/cart_view.dart';
+import 'package:trendiva/features/categories/presentation/views/categories_view.dart';
 import 'package:trendiva/features/home/presentation/views/home_view.dart';
 import 'package:trendiva/features/profile/presentation/views/profile_view.dart';
 
@@ -18,7 +19,12 @@ class _RootViewState extends State<RootView> {
 
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [HomeView(), CartView(), ProfileView()];
+  final List<Widget> _screens = const [
+    HomeView(),
+    CategoriesView(),
+    CartView(),
+    ProfileView(),
+  ];
 
   @override
   void initState() {
@@ -49,9 +55,6 @@ class _RootViewState extends State<RootView> {
       body: PageView(
         controller: _pageController,
         physics: const NeverScrollableScrollPhysics(),
-        onPageChanged: (index) {
-          setState(() => _currentIndex = index);
-        },
         children: _screens,
       ),
       bottomNavigationBar: Container(
@@ -85,6 +88,10 @@ class _RootViewState extends State<RootView> {
               ),
               tabs: const [
                 GButton(icon: CupertinoIcons.home, text: 'Home'),
+                GButton(
+                  icon: CupertinoIcons.square_grid_2x2,
+                  text: 'Categories',
+                ),
                 GButton(icon: CupertinoIcons.cart, text: 'Cart'),
                 GButton(icon: CupertinoIcons.person, text: 'Profile'),
               ],

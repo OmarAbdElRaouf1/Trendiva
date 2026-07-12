@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/custom_icon_button.dart';
@@ -14,7 +15,12 @@ class ProductImageHeader extends StatelessWidget {
         SizedBox(
           height: 380,
           width: double.infinity,
-          child: Image.asset(image, fit: BoxFit.cover),
+          child: CachedNetworkImage(
+            imageUrl: image,
+            fit: BoxFit.cover,
+            placeholder: (_, _) => Container(color: Colors.grey.shade300),
+            errorWidget: (_, _, _) => Container(color: Colors.grey.shade300),
+          ),
         ),
         Positioned(
           top: 12,

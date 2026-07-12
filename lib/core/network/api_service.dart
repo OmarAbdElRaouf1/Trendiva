@@ -23,7 +23,11 @@ class ApiService {
   //Post Method
   Future<dynamic> post(String endpoint, Map<String, dynamic> body) async {
     try {
-      final response = await _dioClient.dio.post(endpoint, data: body);
+      final response = await _dioClient.dio.post(
+        endpoint,
+        data: body,
+        options: Options(contentType: 'application/json'),
+      );
       return response.data;
     } on DioException catch (e) {
       throw ApiExceptions.handleError(e);
@@ -35,7 +39,11 @@ class ApiService {
   //Put Method
   Future<dynamic> put(String endpoint, Map<String, dynamic> body) async {
     try {
-      final response = await _dioClient.dio.put(endpoint, data: body);
+      final response = await _dioClient.dio.put(
+        endpoint,
+        data: body,
+        options: Options(contentType: 'application/json'),
+      );
       return response.data;
     } on DioException catch (e) {
       throw ApiExceptions.handleError(e);
@@ -47,7 +55,11 @@ class ApiService {
   //Delete Method
   Future<dynamic> delete(String endpoint, Map<String, dynamic> body) async {
     try {
-      final response = await _dioClient.dio.delete(endpoint, data: body);
+      final response = await _dioClient.dio.delete(
+        endpoint,
+        data: body,
+        options: Options(contentType: 'application/json'),
+      );
       return response.data;
     } on DioException catch (e) {
       throw ApiExceptions.handleError(e);

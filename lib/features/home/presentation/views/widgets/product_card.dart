@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
@@ -40,7 +41,14 @@ class ProductCard extends StatelessWidget {
                   child: SizedBox(
                     height: 170.h,
                     width: double.infinity,
-                    child: Image.asset(product.image, fit: BoxFit.cover),
+                    child: CachedNetworkImage(
+                      imageUrl: product.image,
+                      fit: BoxFit.cover,
+                      placeholder: (_, _) =>
+                          Container(color: AppColors.tertiaryColor),
+                      errorWidget: (_, _, _) =>
+                          Container(color: AppColors.tertiaryColor),
+                    ),
                   ),
                 ),
 
@@ -77,12 +85,13 @@ class ProductCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    product.brand.toUpperCase(),
-                    style: AppTextStyles.productBrand,
-                  ),
-
-                  Gap(4.h),
+                  if (product.brand.isNotEmpty) ...[
+                    Text(
+                      product.brand.toUpperCase(),
+                      style: AppTextStyles.productBrand,
+                    ),
+                    Gap(4.h),
+                  ],
 
                   Text(
                     product.name,

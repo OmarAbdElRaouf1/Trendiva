@@ -3,10 +3,7 @@ import 'package:trendiva/core/utils/pref_helper.dart';
 
 class DioClient {
   final Dio _dio = Dio(
-    BaseOptions(
-      baseUrl: 'https://accessories-eshop.runasp.net',
-      headers: {"Content-Type": "application/json"},
-    ),
+    BaseOptions(baseUrl: 'https://accessories-eshop.runasp.net'),
   );
   DioClient() {
     _dio.interceptors.add(

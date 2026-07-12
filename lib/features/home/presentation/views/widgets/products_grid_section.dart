@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
-import 'package:trendiva/features/home/presentation/cubit/products_cubit.dart';
-import 'package:trendiva/features/home/presentation/cubit/products_state.dart';
+import 'package:trendiva/features/home/data/models/product_model.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/product_card.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/section_header.dart';
 
 class ProductsGridSection extends StatelessWidget {
-  const ProductsGridSection({super.key});
+  const ProductsGridSection({super.key, required this.products});
+
+  final List<ProductModel> products;
 
   @override
   Widget build(BuildContext context) {
@@ -33,32 +33,18 @@ class ProductsGridSection extends StatelessWidget {
           ),
         ),
         Gap(16.h),
-        BlocBuilder<ProductsCubit, ProductsState>(
-          builder: (context, state) {
-            return switch (state) {
-              ProductsInitial() || ProductsLoading() => const Padding(
-                padding: EdgeInsets.symmetric(vertical: 40),
-                child: Center(child: CircularProgressIndicator()),
-              ),
-              ProductsError(:final message) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 40),
-                child: Center(child: Text('Failed to load products: $message')),
-              ),
-              ProductsLoaded(:final products) => GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: products.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  childAspectRatio: 0.50,
-                ),
-                itemBuilder: (context, index) {
-                  return ProductCard(product: products[index]);
-                },
-              ),
-            };
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: products.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 16,
+            crossAxisSpacing: 16,
+            childAspectRatio: 0.50,
+          ),
+          itemBuilder: (context, index) {
+            return ProductCard(product: products[index]);
           },
         ),
       ],
