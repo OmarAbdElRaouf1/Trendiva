@@ -1,3 +1,4 @@
+import 'package:trendiva/core/network/api_error.dart';
 import 'package:trendiva/core/network/api_service.dart';
 import 'package:trendiva/core/network/end_points.dart';
 import 'package:trendiva/core/utils/pref_helper.dart';
@@ -12,14 +13,23 @@ class AuthRepository {
     required String email,
     required String password,
   }) async {
-    final response = await _apiService.post(EndPoints.login, {
-      'email': email,
-      'password': password,
-    });
-    final auth = AuthResponseModel.fromJson(response as Map<String, dynamic>);
-    await PrefHelper.saveToken(auth.accessToken);
-    await PrefHelper.saveRefreshToken(auth.refreshToken);
-    return auth;
+    try {
+      final response = await _apiService.post(EndPoints.login, {
+        'email': email,
+        'password': password,
+      });
+      final auth = AuthResponseModel.fromJson(
+        response as Map<String, dynamic>,
+      );
+      await PrefHelper.saveToken(auth.accessToken);
+      await PrefHelper.saveRefreshToken(auth.refreshToken);
+      return auth;
+    } on ApiError catch (e) {
+      if (e.statusCode == 401) {
+        throw ApiError(message: 'Incorrect email or password.', statusCode: 401);
+      }
+      rethrow;
+    }
   }
 
   Future<void> signup({

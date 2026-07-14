@@ -1,13 +1,19 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/features/home/data/models/offer_model.dart';
 
 class PromoBannerSection extends StatelessWidget {
-  const PromoBannerSection({super.key});
+  const PromoBannerSection({super.key, required this.offers});
+
+  final List<OfferModel> offers;
 
   @override
   Widget build(BuildContext context) {
+    if (offers.isEmpty) return const SizedBox.shrink();
+
     final width = MediaQuery.of(context).size.width;
 
     return SizedBox(
@@ -15,15 +21,10 @@ class PromoBannerSection extends StatelessWidget {
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
-        itemCount: 2,
+        itemCount: offers.length,
         separatorBuilder: (_, _) => Gap(12.w),
         itemBuilder: (context, index) {
-          return PromoCard(
-            width: width * .78,
-            image: index == 0
-                ? 'assets/images/banner1.jpg'
-                : 'assets/images/banner2.jpg',
-          );
+          return PromoCard(width: width * .78, offer: offers[index]);
         },
       ),
     );
@@ -31,10 +32,10 @@ class PromoBannerSection extends StatelessWidget {
 }
 
 class PromoCard extends StatelessWidget {
-  const PromoCard({super.key, required this.width, required this.image});
+  const PromoCard({super.key, required this.width, required this.offer});
 
   final double width;
-  final String image;
+  final OfferModel offer;
 
   @override
   Widget build(BuildContext context) {
@@ -45,18 +46,11 @@ class PromoCard extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: [
-            Image.asset(
-              image,
+            CachedNetworkImage(
+              imageUrl: offer.coverUrl,
               fit: BoxFit.cover,
-              errorBuilder: (_, _, _) => Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Color(0xFF2B2B28), Color(0xFF4A4A42)],
-                  ),
-                ),
-              ),
+              placeholder: (_, _) => const _BannerFallback(),
+              errorWidget: (_, _, _) => const _BannerFallback(),
             ),
             Container(
               decoration: BoxDecoration(
@@ -77,15 +71,25 @@ class PromoCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("SEASONAL EXCLUSIVE", style: AppTextStyles.bannerTag),
+                  Text("LIMITED OFFER", style: AppTextStyles.bannerTag),
 
                   Gap(10.h),
 
-                  Text("Autumn Collection", style: AppTextStyles.bannerTitle),
+                  Text(
+                    offer.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.bannerTitle,
+                  ),
 
                   Gap(5.h),
 
-                  Text("Up to 40% Off", style: AppTextStyles.bannerSubtitle),
+                  Text(
+                    offer.description,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: AppTextStyles.bannerSubtitle,
+                  ),
 
                   Gap(22.h),
 
@@ -110,6 +114,23 @@ class PromoCard extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _BannerFallback extends StatelessWidget {
+  const _BannerFallback();
+
+  @override
+  Widget build(BuildContext context) {
+    return const DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF2B2B28), Color(0xFF4A4A42)],
         ),
       ),
     );

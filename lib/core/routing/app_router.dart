@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trendiva/features/aboutUs/presentation/views/about_us_view.dart';
 import 'package:trendiva/features/auth/presentation/views/change_password_view.dart';
 import 'package:trendiva/features/auth/presentation/views/forget_password_view.dart';
@@ -9,6 +10,7 @@ import 'package:trendiva/features/home/data/models/product_model.dart';
 import 'package:trendiva/features/home/presentation/views/home_view.dart';
 import 'package:trendiva/features/onBoarding/presentation/views/on_boarding_view.dart';
 import 'package:trendiva/features/product_details/presentation/views/product_details_view.dart';
+import 'package:trendiva/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:trendiva/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:trendiva/features/splash/presentation/views/splash_view.dart';
 import 'package:trendiva/root_view.dart';
@@ -63,7 +65,13 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const AboutUsView());
 
       case Routes.editProfileView:
-        return MaterialPageRoute(builder: (_) => const EditProfileView());
+        final cubit = settings.arguments as ProfileCubit;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: cubit,
+            child: const EditProfileView(),
+          ),
+        );
 
       default:
         return MaterialPageRoute(builder: (_) => const SplashView());

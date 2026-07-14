@@ -6,10 +6,18 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
-import 'package:trendiva/features/profile/data/profile_data.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+  const ProfileHeader({
+    super.key,
+    required this.name,
+    required this.email,
+    this.photo,
+  });
+
+  final String name;
+  final String email;
+  final File? photo;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +31,11 @@ class ProfileHeader extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              ValueListenableBuilder<File?>(
-                valueListenable: ProfileData.photo,
-                builder: (context, photo, _) => CircleAvatar(
-                  radius: 64,
-                  backgroundImage: photo == null
-                      ? const AssetImage('assets/photos/profile_photo.png')
-                      : FileImage(photo),
-                ),
+              CircleAvatar(
+                radius: 64,
+                backgroundImage: photo == null
+                    ? const AssetImage('assets/photos/profile_photo.png')
+                    : FileImage(photo!) as ImageProvider,
               ),
               const Positioned(
                 right: 0,
@@ -56,17 +61,9 @@ class ProfileHeader extends StatelessWidget {
           ),
         ),
         Gap(20.h),
-        ValueListenableBuilder<String>(
-          valueListenable: ProfileData.name,
-          builder: (context, name, _) =>
-              Text(name, style: AppTextStyles.profileName),
-        ),
+        Text(name, style: AppTextStyles.profileName),
         Gap(4.h),
-        ValueListenableBuilder<String>(
-          valueListenable: ProfileData.email,
-          builder: (context, email, _) =>
-              Text(email, style: AppTextStyles.profileEmail),
-        ),
+        Text(email, style: AppTextStyles.profileEmail),
       ],
     );
   }

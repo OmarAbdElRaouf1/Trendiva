@@ -3,24 +3,25 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
-import 'package:trendiva/features/profile/data/profile_data.dart';
 
 class EditProfileAvatar extends StatelessWidget {
   const EditProfileAvatar({
     super.key,
     required this.pickedPhoto,
+    required this.currentPhoto,
     required this.onTap,
   });
 
   final XFile? pickedPhoto;
+  final File? currentPhoto;
   final VoidCallback onTap;
 
   ImageProvider get photoImage {
     if (pickedPhoto != null) {
       return FileImage(File(pickedPhoto!.path));
     }
-    if (ProfileData.photo.value != null) {
-      return FileImage(ProfileData.photo.value!);
+    if (currentPhoto != null) {
+      return FileImage(currentPhoto!);
     }
     return const AssetImage('assets/photos/profile_photo.png');
   }

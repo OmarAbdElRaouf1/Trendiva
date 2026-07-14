@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/core/widgets/retry_button.dart';
+import 'package:trendiva/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:trendiva/features/profile/presentation/cubit/profile_state.dart';
 import 'package:trendiva/features/profile/presentation/views/widgets/logout_button.dart';
 import 'package:trendiva/features/profile/presentation/views/widgets/preference_item.dart';
 import 'package:trendiva/features/profile/presentation/views/widgets/profile_header.dart';
 import 'package:trendiva/features/profile/presentation/views/widgets/profile_section.dart';
+import 'package:trendiva/features/profile/presentation/views/widgets/profile_skeleton.dart';
 import 'package:trendiva/features/profile/presentation/views/widgets/profile_stats.dart';
 import 'package:trendiva/features/profile/presentation/views/widgets/support_item.dart';
 
@@ -22,7 +27,20 @@ class ProfileViewBody extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            const ProfileHeader(),
+            Gap(8.h),
+            BlocBuilder<ProfileCubit, ProfileState>(
+              builder: (context, state) {
+                return switch (state) {
+                  ProfileInitial() || ProfileLoading() => const ProfileSkeleton(),
+                  ProfileError(:final message) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 40),
+                    child: RetryButton(message: 'Failed to load profile: $message'),
+                  ),
+                  ProfileLoaded(:final name, :final email, :final photo) =>
+                    ProfileHeader(name: name, email: email, photo: photo),
+                };
+              },
+            ),
             Gap(32.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -43,7 +61,10 @@ class ProfileViewBody extends StatelessWidget {
                   title: 'Account Settings',
                   description: 'Edit Photo, Name, Password',
                   onTap: () {
-                    context.pushNamed(Routes.editProfileView);
+                    context.pushNamed(
+                      Routes.editProfileView,
+                      arguments: context.read<ProfileCubit>(),
+                    );
                   },
                 ),
                 PreferenceItem(

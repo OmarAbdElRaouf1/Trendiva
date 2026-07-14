@@ -2,18 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/features/home/data/models/category_model.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/category_item.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/section_header.dart';
 
 class CategoriesSection extends StatelessWidget {
-  const CategoriesSection({super.key});
+  const CategoriesSection({super.key, required this.categories});
 
-  static const _categories = [
-    (icon: Icons.checkroom_outlined, label: 'Clothing'),
-    (icon: Icons.directions_walk_outlined, label: 'Shoes'),
-    (icon: Icons.watch_outlined, label: 'Accessories'),
-    (icon: Icons.content_cut_outlined, label: 'Beauty'),
-  ];
+  final List<CategoryModel> categories;
 
   @override
   Widget build(BuildContext context) {
@@ -33,13 +29,16 @@ class CategoriesSection extends StatelessWidget {
           height: 100.h,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: _categories.length,
+            itemCount: categories.length,
             itemBuilder: (context, index) {
-              final category = _categories[index];
+              final category = categories[index];
 
               return Padding(
                 padding: const EdgeInsets.only(right: 16),
-                child: CategoryItem(icon: category.icon, label: category.label),
+                child: CategoryItem(
+                  image: category.coverPictureUrl,
+                  label: category.name,
+                ),
               );
             },
           ),

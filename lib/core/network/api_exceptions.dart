@@ -52,7 +52,7 @@ class ApiExceptions {
       case 302:
         return 'This Email is already registered. Please try logging in.';
       case 401:
-        return 'Incorrect email or password.';
+        return 'Your session has expired. Please log in again.';
       case 403:
         return 'You are not authorized to perform this action.';
       case 404:
