@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -13,12 +12,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       surfaceTintColor: Colors.transparent,
-      backgroundColor: AppColors.profileBackgroundColor,
       leading: IconButton(
         onPressed: () {},
         icon: SvgPicture.asset('assets/icons/app_bar_icons/options.svg'),
       ),
-      title: const Text('Trendiva', style: AppTextStyles.profileAppBarTitle),
+      title: Text('Trendiva', style: AppTextStyles.profileAppBarTitle(context)),
       actions: [
         IconButton(
           onPressed: () {},

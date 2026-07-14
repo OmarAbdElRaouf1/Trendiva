@@ -5,7 +5,6 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/di/service_locator.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/core/utils/validators.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
@@ -117,7 +116,6 @@ class _SignupViewBodyState extends State<_SignupViewBody> {
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-          backgroundColor: AppColors.authBackgroundColor,
           body: SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(
@@ -131,12 +129,12 @@ class _SignupViewBodyState extends State<_SignupViewBody> {
                   Gap(44.h),
                   Text(
                     'Join the\nmovement.',
-                    style: AppTextStyles.authBigTitle,
+                    style: AppTextStyles.authBigTitle(context),
                   ),
                   Gap(10.h),
                   Text(
                     'Discover the pinnacle of sophisticated fashion\nand effortless luxury.',
-                    style: AppTextStyles.authSubtitle,
+                    style: AppTextStyles.authSubtitle(context),
                   ),
                   Gap(28.h),
                   CustomTextField(

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 
 class AuthTimer extends StatefulWidget {
   const AuthTimer({super.key, this.seconds = 119, required this.onExpire});
@@ -57,18 +58,18 @@ class AuthTimerState extends State<AuthTimer> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: const Color(0xFFEEEEEE),
+        color: context.colors.chip,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(Icons.access_time, size: 16, color: Colors.black54),
+          Icon(Icons.access_time, size: 16, color: context.colors.textMuted),
           const SizedBox(width: 6),
           Text(
             _formatted,
-            style: const TextStyle(
-              color: Colors.black54,
+            style: TextStyle(
+              color: context.colors.textMuted,
               fontSize: 13,
               fontWeight: FontWeight.w500,
             ),

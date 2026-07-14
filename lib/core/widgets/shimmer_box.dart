@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 
 class ShimmerBox extends StatelessWidget {
   const ShimmerBox({
@@ -26,7 +27,7 @@ class ShimmerBox extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.surface,
         shape: shape,
         borderRadius: shape == BoxShape.circle
             ? null

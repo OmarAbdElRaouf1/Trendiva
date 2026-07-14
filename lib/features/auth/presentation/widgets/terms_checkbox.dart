@@ -32,7 +32,7 @@ class TermsCheckbox extends StatelessWidget {
         Expanded(
           child: RichText(
             text: TextSpan(
-              style: AppTextStyles.authSmallText.copyWith(
+              style: AppTextStyles.authSmallText(context).copyWith(
                 fontSize: 12,
                 height: 1.4,
               ),
@@ -40,7 +40,7 @@ class TermsCheckbox extends StatelessWidget {
                 const TextSpan(text: 'I agree to the '),
                 TextSpan(
                   text: 'Terms & Conditions',
-                  style: AppTextStyles.authLink.copyWith(
+                  style: AppTextStyles.authLink(context).copyWith(
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                     decoration: TextDecoration.underline,

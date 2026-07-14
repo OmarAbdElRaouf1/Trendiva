@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 
 class PasswordStrength extends StatelessWidget {
   const PasswordStrength({super.key, required this.password});
@@ -42,7 +42,7 @@ class PasswordStrength extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: index < score
                       ? _colors[score]
-                      : AppColors.tertiaryColor,
+                      : context.colors.border,
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
@@ -52,7 +52,7 @@ class PasswordStrength extends StatelessWidget {
         Gap(6.h),
         Text(
           'Password Strength : ${_labels[score]}',
-          style: TextStyle(color: Colors.grey.shade600),
+          style: TextStyle(color: context.colors.textMuted),
         ),
       ],
     );

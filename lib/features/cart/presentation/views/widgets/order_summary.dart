@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 
 class OrderSummary extends StatelessWidget {
   const OrderSummary({super.key, required this.orderTitle, required this.orderPrice, required this.fontSize, required this.fontWeight, required this.color});
@@ -18,7 +19,7 @@ class OrderSummary extends StatelessWidget {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
-            color: Color(0xFF5D5F5C),
+            color: context.colors.textMuted,
           ),
         ),
         Spacer(),

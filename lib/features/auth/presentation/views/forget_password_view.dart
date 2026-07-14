@@ -5,6 +5,7 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/di/service_locator.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/validators.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_state.dart';
@@ -81,7 +82,6 @@ class _ForgetPasswordViewBodyState extends State<_ForgetPasswordViewBody> {
         }
       },
       child: Scaffold(
-        backgroundColor: const Color(0xFFF9F9F9),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -92,7 +92,7 @@ class _ForgetPasswordViewBodyState extends State<_ForgetPasswordViewBody> {
                 Container(
                   padding: const EdgeInsets.all(20.0),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: context.colors.surface,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
@@ -105,19 +105,19 @@ class _ForgetPasswordViewBodyState extends State<_ForgetPasswordViewBody> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         'Forgot Password?',
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF004333),
+                          color: context.colors.heading,
                         ),
                       ),
                       Gap(10.h),
-                      const Text(
+                      Text(
                         'No worries! Enter the email address associated with your account and we\'ll send a link to reset your password.',
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Color(0xff3F4945), height: 1.4),
+                        style: TextStyle(color: context.colors.textSecondary, height: 1.4),
                       ),
                       Gap(30.h),
                       // Enter Email

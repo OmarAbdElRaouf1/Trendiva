@@ -11,7 +11,7 @@ class AboutUsFooter extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('FOLLOW OUR JOURNEY', style: AppTextStyles.aboutFooterTag),
+        Text('FOLLOW OUR JOURNEY', style: AppTextStyles.aboutFooterTag(context)),
         Gap(16.h),
         const Row(
           spacing: 32,
@@ -22,9 +22,9 @@ class AboutUsFooter extends StatelessWidget {
           ],
         ),
         Gap(16.h),
-        const Text(
+        Text(
           '© 2024 Trendiva Fashion Group. All rights reserved.',
-          style: AppTextStyles.aboutCopyright,
+          style: AppTextStyles.aboutCopyright(context),
         ),
       ],
     );

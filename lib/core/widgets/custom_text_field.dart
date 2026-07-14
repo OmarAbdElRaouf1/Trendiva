@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -34,11 +34,11 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         labelTrailing == null
-            ? Text(label, style: AppTextStyles.authLabel)
+            ? Text(label, style: AppTextStyles.authLabel(context))
             : Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(label, style: AppTextStyles.authLabel),
+                  Text(label, style: AppTextStyles.authLabel(context)),
                   labelTrailing!,
                 ],
               ),
@@ -48,15 +48,16 @@ class CustomTextField extends StatelessWidget {
           obscureText: obscureText,
           obscuringCharacter: '•',
           keyboardType: keyboardType,
+          style: TextStyle(color: context.colors.textPrimary),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: AppTextStyles.authHint,
+            hintStyle: AppTextStyles.authHint(context),
             prefixIcon: prefixIcon == null
                 ? null
-                : Icon(prefixIcon, size: 20, color: Colors.black54),
+                : Icon(prefixIcon, size: 20, color: context.colors.textMuted),
             suffixIcon: suffixIcon,
             filled: true,
-            fillColor: AppColors.authFieldColor,
+            fillColor: context.colors.fieldFill,
             contentPadding: EdgeInsets.symmetric(
               horizontal: 16,
               vertical: verticalPadding,

@@ -35,8 +35,11 @@ class PreferenceItem extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: AppTextStyles.profileItemTitle),
-                Text(description, style: AppTextStyles.profileItemDescription),
+                Text(title, style: AppTextStyles.profileItemTitle(context)),
+                Text(
+                  description,
+                  style: AppTextStyles.profileItemDescription(context),
+                ),
               ],
             ),
             const Spacer(),

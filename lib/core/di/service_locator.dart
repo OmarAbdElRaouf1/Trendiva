@@ -12,12 +12,17 @@ import 'package:trendiva/features/home/data/repos/products_repository.dart';
 import 'package:trendiva/features/home/presentation/cubit/home_cubit.dart';
 import 'package:trendiva/features/profile/data/repos/profile_repository.dart';
 import 'package:trendiva/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:trendiva/core/theme/theme_cubit.dart';
 
 final sl = GetIt.instance;
 
-void setupServiceLocator() {
+Future<void> setupServiceLocator() async {
   sl.registerLazySingleton<DioClient>(() => DioClient());
   sl.registerLazySingleton<ApiService>(() => ApiService(sl()));
+
+  sl.registerSingleton<ThemeCubit>(
+    ThemeCubit(await ThemeCubit.loadSavedMode()),
+  );
 
   sl.registerLazySingleton<AuthRepository>(() => AuthRepository(sl()));
   sl.registerFactory<AuthCubit>(() => AuthCubit(sl()));

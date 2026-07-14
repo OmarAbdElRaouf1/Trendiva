@@ -4,7 +4,7 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/core/widgets/custom_button.dart';
 
@@ -16,11 +16,11 @@ class SuccessDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: AppColors.secondaryColor,
+      backgroundColor: context.colors.surfaceMuted,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
         decoration: BoxDecoration(
-          color: AppColors.whiteColor,
+          color: context.colors.surface,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
@@ -28,7 +28,7 @@ class SuccessDialog extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 45.r,
-              backgroundColor: const Color(0xffEEF5F2),
+              backgroundColor: context.colors.chipTint,
               child: SvgPicture.asset(
                 'assets/images/success_dialog.svg',
                 width: 30.w,
@@ -36,10 +36,10 @@ class SuccessDialog extends StatelessWidget {
               ),
             ),
             Gap(30.h),
-            const Text(
+            Text(
               'Password Changed Successfully',
               textAlign: TextAlign.center,
-              style: AppTextStyles.successDialogTitle,
+              style: AppTextStyles.successDialogTitle(context),
             ),
             Gap(20.h),
             Text(
@@ -47,7 +47,7 @@ class SuccessDialog extends StatelessWidget {
                   'Your password has been updated. You can now use your new '
                       'password to log in to your account.',
               textAlign: TextAlign.center,
-              style: AppTextStyles.successDialogText,
+              style: AppTextStyles.successDialogText(context),
             ),
             Gap(30.h),
             CustomButton(

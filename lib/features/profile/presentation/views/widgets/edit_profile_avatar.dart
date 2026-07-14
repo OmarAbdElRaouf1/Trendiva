@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 
 class EditProfileAvatar extends StatelessWidget {
@@ -34,7 +35,7 @@ class EditProfileAvatar extends StatelessWidget {
         padding: const EdgeInsets.all(3),
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(color: AppColors.primaryColor, width: 2),
+          border: Border.all(color: context.colors.primary, width: 2),
         ),
         child: Stack(
           children: [

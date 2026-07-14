@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 
 class AuthOtpTextButton extends StatelessWidget {
   const AuthOtpTextButton({
@@ -16,13 +17,13 @@ class AuthOtpTextButton extends StatelessWidget {
     final defaultPinTheme = PinTheme(
       width: 45,
       height: 60,
-      textStyle: const TextStyle(
+      textStyle: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
-        color: Colors.black,
+        color: context.colors.textPrimary,
       ),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F5),
+        color: context.colors.chip,
         borderRadius: BorderRadius.circular(16),
       ),
     );
@@ -32,7 +33,7 @@ class AuthOtpTextButton extends StatelessWidget {
       defaultPinTheme: defaultPinTheme,
       focusedPinTheme: defaultPinTheme.copyDecorationWith(
         border: Border.all(
-          color: const Color(0xFF004D40),
+          color: context.colors.primary,
           width: 2,
         ),
       ),

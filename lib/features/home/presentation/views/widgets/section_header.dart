@@ -12,7 +12,7 @@ class SectionHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style: AppTextStyles.sectionTitle),
+        Text(title, style: AppTextStyles.sectionTitle(context)),
         trailing ?? const SizedBox.shrink(),
       ],
     );

@@ -21,7 +21,7 @@ class ChangePasswordAppBar extends StatelessWidget
         },
         icon: Icon(Icons.arrow_back, size: 25.sp),
       ),
-      title: const Text('Trendiva', style: AppTextStyles.profileAppBarTitle),
+      title: Text('Trendiva', style: AppTextStyles.profileAppBarTitle(context)),
       actions: [
         IconButton(
           onPressed: () {},

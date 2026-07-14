@@ -6,7 +6,7 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/core/widgets/custom_button.dart';
 import 'package:trendiva/core/widgets/custom_text_field.dart';
@@ -72,7 +72,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
   void showPhotoOptions() {
     showModalBottomSheet(
       context: context,
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: context.colors.surface,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
@@ -81,16 +81,16 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Gap(12.h),
-            const Text('Change Photo', style: AppTextStyles.profileItemTitle),
+            Text('Change Photo', style: AppTextStyles.profileItemTitle(context)),
             Gap(8.h),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.photo_camera_outlined,
-                color: AppColors.darkGreenColor,
+                color: context.colors.heading,
               ),
-              title: const Text(
+              title: Text(
                 'Take Photo',
-                style: AppTextStyles.profileItemTitle,
+                style: AppTextStyles.profileItemTitle(context),
               ),
               onTap: () {
                 sheetContext.pop();
@@ -98,13 +98,13 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               },
             ),
             ListTile(
-              leading: const Icon(
+              leading: Icon(
                 Icons.photo_library_outlined,
-                color: AppColors.darkGreenColor,
+                color: context.colors.heading,
               ),
-              title: const Text(
+              title: Text(
                 'Choose from Gallery',
-                style: AppTextStyles.profileItemTitle,
+                style: AppTextStyles.profileItemTitle(context),
               ),
               onTap: () {
                 sheetContext.pop();
@@ -124,8 +124,8 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
         content: Text(message),
         behavior: SnackBarBehavior.floating,
         backgroundColor: isError
-            ? AppColors.logoutRedColor
-            : AppColors.darkGreenColor,
+            ? context.colors.error
+            : context.colors.heading,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
@@ -191,7 +191,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
             Center(
               child: Text(
                 'Tap the photo to change it',
-                style: AppTextStyles.profileItemDescription,
+                style: AppTextStyles.profileItemDescription(context),
               ),
             ),
             Gap(32.h),
@@ -210,14 +210,14 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
               keyboardType: TextInputType.emailAddress,
             ),
             Gap(32.h),
-            const Text(
+            Text(
               'CHANGE PASSWORD',
-              style: AppTextStyles.profileSectionTitle,
+              style: AppTextStyles.profileSectionTitle(context),
             ),
             Gap(4.h),
-            const Text(
+            Text(
               'Leave empty to keep your current password.',
-              style: AppTextStyles.profileItemDescription,
+              style: AppTextStyles.profileItemDescription(context),
             ),
             Gap(16.h),
             AuthPasswordField(

@@ -20,7 +20,7 @@ class CategoriesSection extends StatelessWidget {
           title: 'Categories',
           trailing: TextButton(
             onPressed: () {},
-            child: Text('View All', style: AppTextStyles.linkText),
+            child: Text('View All', style: AppTextStyles.linkText(context)),
           ),
         ),
         Gap(16.h),

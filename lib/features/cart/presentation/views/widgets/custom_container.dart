@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/features/cart/data/models/cart_item_model.dart';
 
 class CustomContainer extends StatelessWidget {
@@ -25,7 +26,7 @@ class CustomContainer extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: context.colors.surface,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Stack(
@@ -43,12 +44,12 @@ class CustomContainer extends StatelessWidget {
                       placeholder: (_, _) => Container(
                         width: 150.w,
                         height: 150.h,
-                        color: const Color(0xFFEDEDED),
+                        color: context.colors.chip,
                       ),
                       errorWidget: (_, _, _) => Container(
                         width: 150.w,
                         height: 150.h,
-                        color: const Color(0xFFEDEDED),
+                        color: context.colors.chip,
                       ),
                     ),
                   ),
@@ -61,19 +62,19 @@ class CustomContainer extends StatelessWidget {
                           item.productName,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
-                            color: Color(0xFF1C1B1B),
+                            color: context.colors.textPrimary,
                           ),
                         ),
                         Gap(4.h),
                         Text(
                           '\$${item.finalPricePerUnit.toStringAsFixed(2)}',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xFF7EBDAC),
+                            color: context.colors.primaryDark,
                           ),
                         ),
                         Gap(9.h),
@@ -84,7 +85,7 @@ class CustomContainer extends StatelessWidget {
                               color: Colors.transparent,
                               borderRadius: BorderRadius.circular(25),
                               border: Border.all(
-                                color: const Color(0xFFBFC9C4),
+                                color: context.colors.border,
                               ),
                             ),
                             child: Row(
@@ -98,10 +99,10 @@ class CustomContainer extends StatelessWidget {
                                 ),
                                 Text(
                                   '${item.quantity}',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xFF1C1B1B),
+                                    color: context.colors.textPrimary,
                                   ),
                                 ),
                                 IconButton(

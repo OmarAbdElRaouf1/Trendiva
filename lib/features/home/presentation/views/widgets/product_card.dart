@@ -5,6 +5,7 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/features/cart/presentation/cubit/cart_cubit.dart';
@@ -23,7 +24,7 @@ class ProductCard extends StatelessWidget {
       child: Container(
         width: 170.w,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colors.surface,
           borderRadius: BorderRadius.circular(18),
         ),
         child: Column(
@@ -46,9 +47,9 @@ class ProductCard extends StatelessWidget {
                       imageUrl: product.image,
                       fit: BoxFit.cover,
                       placeholder: (_, _) =>
-                          Container(color: AppColors.tertiaryColor),
+                          Container(color: context.colors.border),
                       errorWidget: (_, _, _) =>
-                          Container(color: AppColors.tertiaryColor),
+                          Container(color: context.colors.border),
                     ),
                   ),
                 ),
@@ -97,7 +98,7 @@ class ProductCard extends StatelessWidget {
                   if (product.brand.isNotEmpty) ...[
                     Text(
                       product.brand.toUpperCase(),
-                      style: AppTextStyles.productBrand,
+                      style: AppTextStyles.productBrand(context),
                     ),
                     Gap(4.h),
                   ],
@@ -111,7 +112,7 @@ class ProductCard extends StatelessWidget {
                   Gap(6.h),
                   Text(
                     '\$${product.price.toStringAsFixed(2)}',
-                    style: AppTextStyles.productPrice,
+                    style: AppTextStyles.productPrice(context),
                   ),
                 ],
               ),

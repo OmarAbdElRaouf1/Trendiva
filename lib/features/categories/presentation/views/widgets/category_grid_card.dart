@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/features/home/data/models/category_model.dart';
 
@@ -12,29 +12,31 @@ class CategoryGridCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(18),
       ),
+      clipBehavior: Clip.antiAlias,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             child: category.coverPictureUrl.isEmpty
                 ? const _CategoryImageFallback()
                 : CachedNetworkImage(
                     imageUrl: category.coverPictureUrl,
-                    fit: BoxFit.cover,
                     width: double.infinity,
-                    placeholder: (_, _) => const _CategoryImageFallback(),
+                    fit: BoxFit.cover,
+                    placeholder: (_, _) => const Center(
+                      child: CircularProgressIndicator(strokeWidth: 2),
+                    ),
                     errorWidget: (_, _, _) => const _CategoryImageFallback(),
                   ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: Text(
               category.name,
+              textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.productName,
@@ -52,8 +54,15 @@ class _CategoryImageFallback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.tertiaryColor.withValues(alpha: .35),
-      child: const Icon(Icons.category_outlined, color: AppColors.neutralColor),
+      width: double.infinity,
+      color: context.colors.border.withValues(alpha: 0.25),
+      child: Center(
+        child: Icon(
+          Icons.category_rounded,
+          size: 42,
+          color: context.colors.textSecondary,
+        ),
+      ),
     );
   }
 }

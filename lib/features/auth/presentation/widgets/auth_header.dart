@@ -13,35 +13,35 @@ class AuthHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isLogin ? _loginHeader() : _signupHeader();
+    return isLogin ? _loginHeader(context) : _signupHeader(context);
   }
 
-  Widget _loginHeader() {
+  Widget _loginHeader(BuildContext context) {
     return Column(
       children: [
         const AuthLogo(size: 58, radius: 16),
         Gap(14.h),
         Text(
           'Trendiva',
-          style: AppTextStyles.authLogoTitle,
+          style: AppTextStyles.authLogoTitle(context),
         ),
         Gap(6.h),
         Text(
           'Curating your sophisticated style.',
-          style: AppTextStyles.authSmallText,
+          style: AppTextStyles.authSmallText(context),
         ),
       ],
     );
   }
 
-  Widget _signupHeader() {
+  Widget _signupHeader(BuildContext context) {
     return Row(
       children: [
         const AuthLogo(size: 32, radius: 9),
         Gap(8.w),
         Text(
           'Trendiva',
-          style: AppTextStyles.authLogoTitle.copyWith(
+          style: AppTextStyles.authLogoTitle(context).copyWith(
             fontSize: 20,
             fontWeight: FontWeight.w800,
           ),

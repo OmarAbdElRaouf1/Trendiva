@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/features/home/data/models/product_model.dart';
 import 'package:trendiva/features/product_details/presentation/views/widgets/star_rating.dart';
 
@@ -20,15 +20,15 @@ class ReviewTile extends StatelessWidget {
           children: [
             Text(
               review.author,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
-                color: AppColors.neutralColor,
+                color: context.colors.textPrimary,
               ),
             ),
             Text(
               review.timeAgo,
-              style: const TextStyle(fontSize: 12, color: Colors.grey),
+              style: TextStyle(fontSize: 12, color: context.colors.textMuted),
             ),
           ],
         ),
@@ -37,20 +37,20 @@ class ReviewTile extends StatelessWidget {
         Gap(8.h),
         Text(
           review.comment,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
             height: 1.5,
-            color: Colors.black87,
+            color: context.colors.textSecondary,
           ),
         ),
         Gap(10.h),
         Row(
           children: [
-            const Icon(Icons.thumb_up_alt_outlined, size: 15, color: Colors.grey),
+            Icon(Icons.thumb_up_alt_outlined, size: 15, color: context.colors.textMuted),
             Gap(6.w),
             Text(
               'Helpful (${review.helpfulCount})',
-              style: const TextStyle(fontSize: 13, color: Colors.grey),
+              style: TextStyle(fontSize: 13, color: context.colors.textMuted),
             ),
           ],
         ),

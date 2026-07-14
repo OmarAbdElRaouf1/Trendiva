@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/features/home/data/models/product_model.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/product_card.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/section_header.dart';
@@ -22,13 +22,13 @@ class ProductsGridSection extends StatelessWidget {
             width: 36.w,
             height: 36.h,
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: context.colors.surface,
               borderRadius: BorderRadius.circular(10.r),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.tune,
               size: 18,
-              color: AppColors.neutralColor,
+              color: context.colors.textPrimary,
             ),
           ),
         ),

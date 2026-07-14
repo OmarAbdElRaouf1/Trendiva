@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import '../../../../core/widgets/custom_text_field.dart';
 
 class AuthPasswordField extends StatelessWidget {
@@ -40,7 +41,7 @@ class AuthPasswordField extends StatelessWidget {
               ? Icons.visibility_off_outlined
               : Icons.visibility_outlined,
           size: 20,
-          color: Colors.black54,
+          color: context.colors.textMuted,
         ),
       ),
     );

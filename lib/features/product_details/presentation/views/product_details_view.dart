@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/features/home/data/models/product_model.dart';
 import 'package:trendiva/features/product_details/presentation/views/widgets/product_image_header.dart';
 import 'package:trendiva/features/product_details/presentation/views/widgets/review_tile.dart';
@@ -15,7 +15,6 @@ class ProductDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -31,10 +30,10 @@ class ProductDetailsView extends StatelessWidget {
                     Gap(12.h),
                     Text(
                       product.name,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.neutralColor,
+                        color: context.colors.textPrimary,
                       ),
                     ),
                     Gap(12.h),
@@ -44,10 +43,10 @@ class ProductDetailsView extends StatelessWidget {
                     Gap(12.h),
                     Text(
                       product.description,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
                         height: 1.6,
-                        color: Colors.black87,
+                        color: context.colors.textSecondary,
                       ),
                     ),
                     Gap(28.h),
@@ -80,7 +79,7 @@ class _RatingRow extends StatelessWidget {
         Gap(8.w),
         Text(
           '${product.rating}  (${product.reviewCount} Reviews)',
-          style: const TextStyle(fontSize: 13, color: Colors.grey),
+          style: TextStyle(fontSize: 13, color: context.colors.textMuted),
         ),
       ],
     );
@@ -99,19 +98,19 @@ class _PriceRow extends StatelessWidget {
       children: [
         Text(
           '\$${product.price.toStringAsFixed(2)}',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w700,
-            color: AppColors.primaryColor,
+            color: context.colors.primary,
           ),
         ),
         if (product.oldPrice != null) ...[
           Gap(10.w),
           Text(
             '\$${product.oldPrice!.toStringAsFixed(2)}',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
-              color: Colors.grey,
+              color: context.colors.textMuted,
               decoration: TextDecoration.lineThrough,
             ),
           ),
@@ -130,11 +129,11 @@ class _SectionLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w700,
         letterSpacing: 1.2,
-        color: Colors.black54,
+        color: context.colors.textMuted,
       ),
     );
   }
@@ -153,12 +152,12 @@ class _ReviewsSection extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text(
+            Text(
               'Reviews',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w700,
-                color: AppColors.neutralColor,
+                color: context.colors.textPrimary,
               ),
             ),
             Gap(10.w),
@@ -171,7 +170,7 @@ class _ReviewsSection extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 3),
               child: Text(
                 '${product.rating} (${product.reviewCount} Reviews)',
-                style: const TextStyle(fontSize: 12, color: Colors.grey),
+                style: TextStyle(fontSize: 12, color: context.colors.textMuted),
               ),
             ),
           ],
@@ -204,17 +203,17 @@ class _WriteReviewButton extends StatelessWidget {
         onPressed: () {},
         style: OutlinedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 18),
-          side: const BorderSide(color: AppColors.tertiaryColor),
+          side: BorderSide(color: context.colors.border),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
           ),
         ),
-        child: const Text(
+        child: Text(
           'Write a Review',
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w600,
-            color: AppColors.neutralColor,
+            color: context.colors.textPrimary,
           ),
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 
@@ -27,7 +28,7 @@ class ProfileHeader extends StatelessWidget {
           padding: const EdgeInsets.all(3),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: AppColors.primaryColor, width: 2),
+            border: Border.all(color: context.colors.primary, width: 2),
           ),
           child: Stack(
             children: [
@@ -61,9 +62,9 @@ class ProfileHeader extends StatelessWidget {
           ),
         ),
         Gap(20.h),
-        Text(name, style: AppTextStyles.profileName),
+        Text(name, style: AppTextStyles.profileName(context)),
         Gap(4.h),
-        Text(email, style: AppTextStyles.profileEmail),
+        Text(email, style: AppTextStyles.profileEmail(context)),
       ],
     );
   }

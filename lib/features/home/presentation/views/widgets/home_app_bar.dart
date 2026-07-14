@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -11,18 +11,18 @@ class HomeAppBar extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.menu, color: AppColors.neutralColor),
+          icon: Icon(Icons.menu, color: context.colors.textPrimary),
         ),
-        Text('Trendiva', style: AppTextStyles.appTitle),
+        Text('Trendiva', style: AppTextStyles.appTitle(context)),
         Spacer(),
         Stack(
           clipBehavior: Clip.none,
           children: [
             IconButton(
               onPressed: () {},
-              icon: const Icon(
+              icon: Icon(
                 Icons.notifications_none_rounded,
-                color: AppColors.neutralColor,
+                color: context.colors.textPrimary,
               ),
             ),
           ],

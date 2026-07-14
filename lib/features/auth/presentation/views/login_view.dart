@@ -5,7 +5,7 @@ import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/di/service_locator.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/core/utils/validators.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
@@ -80,7 +80,6 @@ class _LoginViewBodyState extends State<_LoginViewBody> {
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
-          backgroundColor: AppColors.authBackgroundColor,
           body: SafeArea(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(
@@ -113,7 +112,7 @@ class _LoginViewBodyState extends State<_LoginViewBody> {
                               context.pushNamed(Routes.forgetPasswordView),
                           child: Text(
                             'Forgot Password?',
-                            style: AppTextStyles.authLink.copyWith(
+                            style: AppTextStyles.authLink(context).copyWith(
                               fontSize: 11,
                             ),
                           ),
@@ -142,9 +141,9 @@ class _LoginViewBodyState extends State<_LoginViewBody> {
                     ],
                   ),
                   Gap(28.h),
-                  const Text(
+                  Text(
                     '© 2024 Trendiva Fashion. All rights reserved.',
-                    style: TextStyle(fontSize: 11, color: Colors.black38),
+                    style: TextStyle(fontSize: 11, color: context.colors.textMuted),
                   ),
                 ],
               ),

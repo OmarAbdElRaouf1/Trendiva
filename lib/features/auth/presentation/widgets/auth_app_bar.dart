@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 
 class AuthAppBar extends StatelessWidget {
   const AuthAppBar({super.key});
@@ -9,12 +10,12 @@ class AuthAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
+        Text(
           'Trendiva',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF00342B),
+            color: context.colors.heading,
           ),
         ),
         IconButton(

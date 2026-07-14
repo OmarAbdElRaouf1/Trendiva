@@ -4,7 +4,7 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/theme_cubit.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/core/widgets/retry_button.dart';
 import 'package:trendiva/features/profile/presentation/cubit/profile_cubit.dart';
@@ -71,10 +71,14 @@ class ProfileViewBody extends StatelessWidget {
                   icon: 'assets/icons/profile_icons/theme.svg',
                   title: 'App Theme',
                   description: 'Switch between Light/Dark',
-                  trailing: Switch(
-                    value: false,
-                    onChanged: (value) {},
-                    activeThumbColor: AppColors.darkGreenColor,
+                  trailing: BlocBuilder<ThemeCubit, ThemeMode>(
+                    builder: (context, mode) {
+                      return Switch(
+                        value: mode == ThemeMode.dark,
+                        onChanged: (_) =>
+                            context.read<ThemeCubit>().toggleTheme(),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -108,9 +112,9 @@ class ProfileViewBody extends StatelessWidget {
             Gap(8.h),
             const LogoutButton(),
             Gap(32.h),
-            const Text(
+            Text(
               'Trendiva Version 2.4.0 (Emerald Build)',
-              style: AppTextStyles.profileVersion,
+              style: AppTextStyles.profileVersion(context),
             ),
             Gap(120.h),
           ],

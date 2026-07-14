@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 
 class AuthCard extends StatelessWidget {
   final List<Widget> children;
@@ -15,7 +15,7 @@ class AuthCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
       decoration: BoxDecoration(
-        color: AppColors.whiteColor,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/widgets/shimmer_box.dart';
 
 class CartSkeleton extends StatelessWidget {
@@ -10,8 +11,8 @@ class CartSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: const Color(0xFFEDEAE6),
-      highlightColor: const Color(0xFFFAF8F6),
+      baseColor: context.colors.surfaceMuted,
+      highlightColor: context.colors.surface,
       child: ListView(
         children: [
           Gap(32.h),
@@ -36,7 +37,7 @@ class _CartItemSkeleton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.colors.surface,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(

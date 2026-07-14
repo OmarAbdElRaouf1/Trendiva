@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 
 class PasswordRequirementsCard extends StatelessWidget {
@@ -18,7 +18,7 @@ class PasswordRequirementsCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(16),
-      color: AppColors.secondaryColor,
+      color: context.colors.surfaceMuted,
       child: Column(
         children: [
           for (int i = 0; i < _requirements.length; i++) ...[
@@ -43,7 +43,7 @@ class _RequirementItem extends StatelessWidget {
         const Icon(Icons.check_circle_outline),
         Gap(8.w),
         Expanded(
-          child: Text(text, style: AppTextStyles.passwordRequirementText),
+          child: Text(text, style: AppTextStyles.passwordRequirementText(context)),
         ),
       ],
     );

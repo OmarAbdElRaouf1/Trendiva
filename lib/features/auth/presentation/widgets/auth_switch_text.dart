@@ -20,13 +20,13 @@ class AuthSwitchText extends StatelessWidget {
       children: [
         Text(
           normalText,
-          style: AppTextStyles.authSmallText.copyWith(fontSize: 14),
+          style: AppTextStyles.authSmallText(context).copyWith(fontSize: 14),
         ),
         GestureDetector(
           onTap: onTap,
           child: Text(
             actionText,
-            style: AppTextStyles.authLink,
+            style: AppTextStyles.authLink(context),
           ),
         ),
       ],

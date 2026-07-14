@@ -12,7 +12,7 @@ class ContactInfoSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Trendiva HQ', style: AppTextStyles.aboutContactTitle),
+        Text('Trendiva HQ', style: AppTextStyles.aboutContactTitle(context)),
         Gap(16.h),
         const ContactInfoItem(
           icon: Icons.location_on_outlined,

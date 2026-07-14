@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:trendiva/features/categories/presentation/cubit/categories_cubit.dart';
@@ -18,16 +19,16 @@ class RetryButton extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(
+          Icon(
             Icons.wifi_off_rounded,
             size: 40,
-            color: AppColors.greyTextColor,
+            color: context.colors.textMuted,
           ),
           const SizedBox(height: 12),
           Text(
             message,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: AppColors.greyTextColor),
+            style: TextStyle(color: context.colors.textMuted),
           ),
           const SizedBox(height: 16),
           ElevatedButton.icon(

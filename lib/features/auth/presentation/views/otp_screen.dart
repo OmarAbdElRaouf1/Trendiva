@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trendiva/core/di/service_locator.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/validators.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_state.dart';
@@ -105,7 +106,6 @@ class _OtpVerificationBodyState extends State<_OtpVerificationBody> {
         }
       },
       child: Scaffold(
-        backgroundColor: const Color(0xFFF9F9F9),
         body: SafeArea(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
@@ -120,7 +120,7 @@ class _OtpVerificationBodyState extends State<_OtpVerificationBody> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(28),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: context.colors.surface,
                     borderRadius: BorderRadius.circular(32),
                     boxShadow: [
                       BoxShadow(
@@ -169,19 +169,19 @@ class _OtpVerificationBodyState extends State<_OtpVerificationBody> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             "Didn't receive a code? ",
                             style: TextStyle(
-                              color: Color(0xff5D5F5C),
+                              color: context.colors.textMuted,
                               fontSize: 14,
                             ),
                           ),
                           GestureDetector(
                             onTap: () => _resend(context),
-                            child: const Text(
+                            child: Text(
                               "Resend Code",
                               style: TextStyle(
-                                color: Color(0xff00342B),
+                                color: context.colors.heading,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
                               ),

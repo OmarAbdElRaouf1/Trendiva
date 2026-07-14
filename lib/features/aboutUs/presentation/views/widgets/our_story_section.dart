@@ -11,22 +11,22 @@ class OurStorySection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('Our Story', style: AppTextStyles.aboutSectionTitle),
+        Text('Our Story', style: AppTextStyles.aboutSectionTitle(context)),
         Gap(16.h),
-        const Text(
+        Text(
           'Trendiva began with a singular vision: to reconcile the fast-paced '
           'world of fashion with the timeless patience of artisan '
           'craftsmanship. What started in a small atelier has evolved into a '
           'global symbol of sophisticated style.',
-          style: AppTextStyles.aboutBodyText,
+          style: AppTextStyles.aboutBodyText(context),
         ),
         Gap(16.h),
-        const Text(
+        Text(
           'Our commitment to effortless luxury is woven into every thread of '
           'our sustainable silk collections. We believe that true fashion '
           "shouldn't cost the earth, which is why our craftsmanship "
           'prioritizes ethical sourcing and zero-waste production cycles.',
-          style: AppTextStyles.aboutBodyText,
+          style: AppTextStyles.aboutBodyText(context),
         ),
       ],
     );

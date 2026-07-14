@@ -90,15 +90,15 @@ class _ChangePasswordViewBodyState extends State<ChangePasswordViewBody> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gap(32.h),
-              const Text(
+              Text(
                 'Create New Password',
-                style: AppTextStyles.changePasswordTitle,
+                style: AppTextStyles.changePasswordTitle(context),
               ),
               Gap(4.h),
-              const Text(
+              Text(
                 'Your new password must be different from previous used '
                 'passwords.',
-                style: AppTextStyles.changePasswordSubtitle,
+                style: AppTextStyles.changePasswordSubtitle(context),
               ),
               Gap(24.h),
               AuthPasswordField(

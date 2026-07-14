@@ -15,7 +15,7 @@ class ContactInfoItem extends StatelessWidget {
       children: [
         Icon(icon),
         Gap(8.w),
-        Expanded(child: Text(text, style: AppTextStyles.aboutContactText)),
+        Expanded(child: Text(text, style: AppTextStyles.aboutContactText(context))),
       ],
     );
   }

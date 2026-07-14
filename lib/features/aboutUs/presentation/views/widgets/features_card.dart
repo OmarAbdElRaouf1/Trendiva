@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 
 class FeatureCard extends StatelessWidget {
@@ -22,7 +23,7 @@ class FeatureCard extends StatelessWidget {
       padding: const EdgeInsets.all(18),
 
       decoration: BoxDecoration(
-        color: Color(0xffEBE7E7),
+        color: context.colors.surfaceMuted,
         borderRadius: BorderRadius.circular(15),
       ),
 
@@ -40,7 +41,7 @@ class FeatureCard extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 24,
-              color: AppColors.primaryColor,
+              color: context.colors.primary,
             ),
           ),
 
@@ -49,7 +50,7 @@ class FeatureCard extends StatelessWidget {
           Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Color(0xff5D5F5C)),
+            style: TextStyle(color: context.colors.textMuted),
           ),
         ],
       ),

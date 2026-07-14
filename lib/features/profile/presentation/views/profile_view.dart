@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/widgets/custom_app_bar.dart';
 import 'package:trendiva/features/profile/presentation/views/widgets/profile_view_body.dart';
 
@@ -8,10 +7,6 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.profileBackgroundColor,
-      appBar: CustomAppBar(),
-      body: ProfileViewBody(),
-    );
+    return const Scaffold(appBar: CustomAppBar(), body: ProfileViewBody());
   }
 }

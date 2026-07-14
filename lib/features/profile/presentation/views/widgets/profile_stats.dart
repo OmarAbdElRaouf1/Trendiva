@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 
 class ProfileStats extends StatelessWidget {
@@ -18,14 +18,14 @@ class ProfileStats extends StatelessWidget {
       height: 88,
       width: 100,
       decoration: BoxDecoration(
-        color: AppColors.statsBackgroundColor,
+        color: context.colors.surfaceMuted,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(numOfStats, style: AppTextStyles.profileStatsNumber),
-          Text(textOfStats, style: AppTextStyles.profileStatsLabel),
+          Text(numOfStats, style: AppTextStyles.profileStatsNumber(context)),
+          Text(textOfStats, style: AppTextStyles.profileStatsLabel(context)),
         ],
       ),
     );

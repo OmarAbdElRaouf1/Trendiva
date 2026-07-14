@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
-import 'package:trendiva/core/utils/app_colors.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/widgets/retry_button.dart';
 import 'package:trendiva/features/cart/data/models/cart_model.dart';
 import 'package:trendiva/features/cart/presentation/cubit/cart_cubit.dart';
@@ -48,7 +48,7 @@ class _CartContent extends StatelessWidget {
       return Center(
         child: Text(
           'Your cart is empty',
-          style: TextStyle(fontSize: 24.sp, color: AppColors.primaryColor),
+          style: TextStyle(fontSize: 24.sp, color: context.colors.primary),
         ),
       );
     }
@@ -56,21 +56,21 @@ class _CartContent extends StatelessWidget {
     return ListView(
       children: [
         Gap(32.h),
-        const Text(
+        Text(
           'Your Shopping Bag',
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w700,
-            color: Color(0xFF1C1B1B),
+            color: context.colors.textPrimary,
           ),
         ),
         Gap(4.h),
         Text(
           '${cart.items.length} items in your cart',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w400,
-            color: Color(0xFF3F4945),
+            color: context.colors.textSecondary,
           ),
         ),
         Gap(24.h),
@@ -91,7 +91,7 @@ class _CartContent extends StatelessWidget {
           orderPrice: '\$${cart.subtotal.toStringAsFixed(2)}',
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          color: const Color(0xFF5D5F5C),
+          color: context.colors.textMuted,
         ),
         Gap(8.h),
         OrderSummary(
@@ -99,7 +99,7 @@ class _CartContent extends StatelessWidget {
           orderPrice: 'free',
           fontSize: 16,
           fontWeight: FontWeight.w400,
-          color: const Color(0xFF5D5F5C),
+          color: context.colors.textMuted,
         ),
         Gap(8.h),
         OrderSummary(
@@ -107,7 +107,7 @@ class _CartContent extends StatelessWidget {
           orderPrice: '\$${cart.subtotal.toStringAsFixed(2)}',
           fontSize: 24,
           fontWeight: FontWeight.w700,
-          color: const Color(0xFF1C1B1B),
+          color: context.colors.textPrimary,
         ),
         Gap(16.h),
         CustomButton(

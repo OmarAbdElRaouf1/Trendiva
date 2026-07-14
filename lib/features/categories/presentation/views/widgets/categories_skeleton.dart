@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/widgets/shimmer_box.dart';
 
 class CategoriesSkeleton extends StatelessWidget {
@@ -9,8 +10,8 @@ class CategoriesSkeleton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: const Color(0xFFEDEAE6),
-      highlightColor: const Color(0xFFFAF8F6),
+      baseColor: context.colors.surfaceMuted,
+      highlightColor: context.colors.surface,
       child: GridView.builder(
         itemCount: 6,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

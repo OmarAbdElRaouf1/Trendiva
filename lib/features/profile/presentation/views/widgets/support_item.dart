@@ -29,7 +29,7 @@ class SupportItem extends StatelessWidget {
             children: [
               SvgPicture.asset(icon),
               Gap(24.w),
-              Text(title, style: AppTextStyles.profileItemTitle),
+              Text(title, style: AppTextStyles.profileItemTitle(context)),
               const Spacer(),
               SvgPicture.asset('assets/icons/profile_icons/show.svg'),
             ],
