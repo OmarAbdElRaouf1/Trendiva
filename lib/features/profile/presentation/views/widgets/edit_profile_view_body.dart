@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,7 +11,8 @@ import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/core/widgets/custom_button.dart';
 import 'package:trendiva/core/widgets/custom_text_field.dart';
 import 'package:trendiva/features/auth/presentation/widgets/auth_password_field.dart';
-import 'package:trendiva/features/profile/data/profile_data.dart';
+import 'package:trendiva/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:trendiva/features/profile/presentation/cubit/profile_state.dart';
 import 'package:trendiva/features/profile/presentation/views/widgets/edit_profile_avatar.dart';
 
 class EditProfileViewBody extends StatefulWidget {
@@ -21,17 +23,25 @@ class EditProfileViewBody extends StatefulWidget {
 }
 
 class _EditProfileViewBodyState extends State<EditProfileViewBody> {
-  late final nameController = TextEditingController(
-    text: ProfileData.name.value,
-  );
-  late final emailController = TextEditingController(
-    text: ProfileData.email.value,
-  );
+  late final TextEditingController nameController;
+  late final TextEditingController emailController;
   final newPasswordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   bool isNewPasswordHidden = true;
   bool isConfirmPasswordHidden = true;
   XFile? pickedPhoto;
+
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<ProfileCubit>().state;
+    nameController = TextEditingController(
+      text: state is ProfileLoaded ? state.name : '',
+    );
+    emailController = TextEditingController(
+      text: state is ProfileLoaded ? state.email : '',
+    );
+  }
 
   @override
   void dispose() {
@@ -121,7 +131,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
     );
   }
 
-  void saveChanges() {
+  Future<void> saveChanges() async {
     final name = nameController.text.trim();
     final email = emailController.text.trim();
     final newPassword = newPasswordController.text;
@@ -146,17 +156,23 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
       }
     }
 
-    ProfileData.name.value = name;
-    ProfileData.email.value = email;
-    if (pickedPhoto != null) {
-      ProfileData.photo.value = File(pickedPhoto!.path);
-    }
+    await context.read<ProfileCubit>().updateProfile(
+      name: name,
+      email: email,
+      newPhoto: pickedPhoto == null ? null : File(pickedPhoto!.path),
+    );
+    if (!mounted) return;
     context.pop();
     showMessage('Profile updated successfully');
   }
 
   @override
   Widget build(BuildContext context) {
+    final profileState = context.watch<ProfileCubit>().state;
+    final currentPhoto = profileState is ProfileLoaded
+        ? profileState.photo
+        : null;
+
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -167,6 +183,7 @@ class _EditProfileViewBodyState extends State<EditProfileViewBody> {
             Center(
               child: EditProfileAvatar(
                 pickedPhoto: pickedPhoto,
+                currentPhoto: currentPhoto,
                 onTap: showPhotoOptions,
               ),
             ),

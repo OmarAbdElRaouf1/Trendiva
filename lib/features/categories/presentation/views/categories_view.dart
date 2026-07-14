@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trendiva/core/di/service_locator.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/widgets/custom_app_bar.dart';
-import 'package:trendiva/features/categories/presentation/cubit/categories_cubit.dart';
 import 'package:trendiva/features/categories/presentation/views/widgets/categories_view_body.dart';
 
 class CategoriesView extends StatelessWidget {
@@ -11,13 +8,10 @@ class CategoriesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<CategoriesCubit>()..loadCategories(),
-      child: Scaffold(
-        backgroundColor: AppColors.profileBackgroundColor,
-        appBar: const CustomAppBar(),
-        body: const CategoriesViewBody(),
-      ),
+    return Scaffold(
+      backgroundColor: AppColors.profileBackgroundColor,
+      appBar: const CustomAppBar(),
+      body: const CategoriesViewBody(),
     );
   }
 }

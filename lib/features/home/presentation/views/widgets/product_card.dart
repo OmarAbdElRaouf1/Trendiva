@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/helpers/extensions.dart';
 import 'package:trendiva/core/routing/routes.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
+import 'package:trendiva/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:trendiva/features/home/data/models/product_model.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/custom_icon_button.dart';
 
@@ -17,8 +19,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () =>
-          context.pushNamed(Routes.productDetails, arguments: product),
+      onTap: () => context.pushNamed(Routes.productDetails, arguments: product),
       child: Container(
         width: 170.w,
         decoration: BoxDecoration(
@@ -70,9 +71,17 @@ class ProductCard extends StatelessWidget {
                     icon: Icons.add,
                     backgroundColor: AppColors.accentColor,
                     iconColor: Colors.white,
-                    size: 46,
+                    size: 50.w,
                     iconSize: 24,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.read<CartCubit>().addItem(productId: product.id);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          duration: Duration(seconds: 1),
+                          content: Text('${product.name} added to cart'),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
@@ -99,9 +108,7 @@ class ProductCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: AppTextStyles.productName,
                   ),
-
                   Gap(6.h),
-
                   Text(
                     '\$${product.price.toStringAsFixed(2)}',
                     style: AppTextStyles.productPrice,
