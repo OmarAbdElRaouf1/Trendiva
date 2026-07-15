@@ -1,18 +1,21 @@
 import 'package:trendiva/core/network/api_service.dart';
 import 'package:trendiva/core/network/end_points.dart';
 import 'package:trendiva/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/home/domain/entities/product_entity.dart';
+import 'package:trendiva/features/home/domain/repos/products_repository.dart';
 
-class ProductsRepository {
-  ProductsRepository(this._apiService);
+class ProductsRepositoryImpl implements ProductsRepository {
+  ProductsRepositoryImpl(this._apiService);
 
   final ApiService _apiService;
-  Future<List<ProductModel>>? _productsFuture;
+  Future<List<ProductEntity>>? _productsFuture;
 
-  Future<List<ProductModel>> getProducts() {
+  @override
+  Future<List<ProductEntity>> getProducts() {
     return _productsFuture ??= _fetchProducts();
   }
 
-  Future<List<ProductModel>> _fetchProducts() async {
+  Future<List<ProductEntity>> _fetchProducts() async {
     try {
       final response = await _apiService.get(EndPoints.products);
       final items = (response as Map<String, dynamic>)['items'] as List;

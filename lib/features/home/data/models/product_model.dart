@@ -1,43 +1,17 @@
-class Review {
-  const Review({
-    required this.author,
-    required this.timeAgo,
-    required this.rating,
-    required this.comment,
-    this.helpfulCount = 0,
-  });
+import 'package:trendiva/features/home/domain/entities/product_entity.dart';
 
-  final String author;
-  final String timeAgo;
-  final double rating;
-  final String comment;
-  final int helpfulCount;
-}
-
-class ProductModel {
+class ProductModel extends ProductEntity {
   const ProductModel({
-    required this.id,
-    required this.brand,
-    required this.name,
-    required this.price,
-    required this.image,
-    this.oldPrice,
-    this.rating = 0,
-    this.reviewCount = 0,
-    this.description = '',
-    this.reviews = const [],
+    required super.id,
+    required super.brand,
+    required super.name,
+    required super.price,
+    required super.image,
+    super.oldPrice,
+    super.rating,
+    super.reviewCount,
+    super.description,
   });
-
-  final String id;
-  final String brand;
-  final String name;
-  final double price;
-  final String image;
-  final double? oldPrice;
-  final double rating;
-  final int reviewCount;
-  final String description;
-  final List<Review> reviews;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     final originalPrice = (json['price'] as num).toDouble();

@@ -1,18 +1,21 @@
 import 'package:trendiva/core/network/api_service.dart';
 import 'package:trendiva/core/network/end_points.dart';
 import 'package:trendiva/features/home/data/models/offer_model.dart';
+import 'package:trendiva/features/home/domain/entities/offer_entity.dart';
+import 'package:trendiva/features/home/domain/repos/offers_repository.dart';
 
-class OffersRepository {
-  OffersRepository(this._apiService);
+class OffersRepositoryImpl implements OffersRepository {
+  OffersRepositoryImpl(this._apiService);
 
   final ApiService _apiService;
-  Future<List<OfferModel>>? _offersFuture;
+  Future<List<OfferEntity>>? _offersFuture;
 
-  Future<List<OfferModel>> getOffers() {
+  @override
+  Future<List<OfferEntity>> getOffers() {
     return _offersFuture ??= _fetchOffers();
   }
 
-  Future<List<OfferModel>> _fetchOffers() async {
+  Future<List<OfferEntity>> _fetchOffers() async {
     try {
       final response = await _apiService.get(EndPoints.offers);
       final offers = (response as Map<String, dynamic>)['offers']

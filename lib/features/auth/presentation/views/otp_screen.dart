@@ -7,17 +7,23 @@ import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/validators.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_state.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_app_bar.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_button_click.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_otp_text.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_otp_text_button.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_timer.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_app_bar.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_button_click.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_otp_text.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_otp_text_button.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_timer.dart';
 
 class OtpScreenArgs {
-  const OtpScreenArgs({required this.email, required this.purpose});
+  const OtpScreenArgs({
+    required this.email,
+    required this.purpose,
+    this.sendOnOpen = false,
+  });
 
   final String email;
   final OtpPurpose purpose;
+
+  final bool sendOnOpen;
 }
 
 class OtpVerificationScreen extends StatelessWidget {
@@ -29,23 +35,31 @@ class OtpVerificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => sl<AuthCubit>(),
-      child: _OtpVerificationBody(args: args),
+      child: OtpVerificationBody(args: args),
     );
   }
 }
 
-class _OtpVerificationBody extends StatefulWidget {
-  const _OtpVerificationBody({required this.args});
+class OtpVerificationBody extends StatefulWidget {
+  const OtpVerificationBody({super.key, required this.args});
 
   final OtpScreenArgs args;
 
   @override
-  State<_OtpVerificationBody> createState() => _OtpVerificationBodyState();
+  State<OtpVerificationBody> createState() => _OtpVerificationBodyState();
 }
 
-class _OtpVerificationBodyState extends State<_OtpVerificationBody> {
+class _OtpVerificationBodyState extends State<OtpVerificationBody> {
   final _timerKey = GlobalKey<AuthTimerState>();
   String _code = '';
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.args.sendOnOpen) {
+      _resend(context);
+    }
+  }
 
   void _verify(BuildContext context) {
     FocusScope.of(context).unfocus();

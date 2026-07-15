@@ -3,13 +3,16 @@ import 'package:trendiva/core/network/api_service.dart';
 import 'package:trendiva/core/network/end_points.dart';
 import 'package:trendiva/core/utils/pref_helper.dart';
 import 'package:trendiva/features/auth/data/models/auth_response_model.dart';
+import 'package:trendiva/features/auth/domain/entities/auth_token_entity.dart';
+import 'package:trendiva/features/auth/domain/repos/auth_repository.dart';
 
-class AuthRepository {
-  AuthRepository(this._apiService);
+class AuthRepositoryImpl implements AuthRepository {
+  AuthRepositoryImpl(this._apiService);
 
   final ApiService _apiService;
 
-  Future<AuthResponseModel> login({
+  @override
+  Future<AuthTokenEntity> login({
     required String email,
     required String password,
   }) async {
@@ -25,6 +28,9 @@ class AuthRepository {
       await PrefHelper.saveRefreshToken(auth.refreshToken);
       return auth;
     } on ApiError catch (e) {
+      if (e.message.toLowerCase().contains('not verified')) {
+        throw EmailNotVerifiedError(email: email);
+      }
       if (e.statusCode == 401) {
         throw ApiError(message: 'Incorrect email or password.', statusCode: 401);
       }
@@ -32,6 +38,7 @@ class AuthRepository {
     }
   }
 
+  @override
   Future<void> signup({
     required String firstName,
     required String lastName,
@@ -46,6 +53,7 @@ class AuthRepository {
     });
   }
 
+  @override
   Future<String?> forgotPassword({required String email}) async {
     final response = await _apiService.post(EndPoints.forgotPassword, {
       'email': email,
@@ -53,6 +61,7 @@ class AuthRepository {
     return _extractMessage(response);
   }
 
+  @override
   Future<String?> validateOtp({
     required String email,
     required String otp,
@@ -64,6 +73,7 @@ class AuthRepository {
     return _extractMessage(response);
   }
 
+  @override
   Future<String?> verifyEmail({
     required String email,
     required String otp,
@@ -75,6 +85,7 @@ class AuthRepository {
     return _extractMessage(response);
   }
 
+  @override
   Future<String?> resendOtp({required String email}) async {
     final response = await _apiService.post(EndPoints.resendOtp, {
       'email': email,
@@ -82,6 +93,7 @@ class AuthRepository {
     return _extractMessage(response);
   }
 
+  @override
   Future<String?> resetPassword({
     required String email,
     required String otp,

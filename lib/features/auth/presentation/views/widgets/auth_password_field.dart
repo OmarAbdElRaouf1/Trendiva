@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trendiva/core/theme/app_theme_colors.dart';
-import '../../../../core/widgets/custom_text_field.dart';
+import '../../../../../core/widgets/custom_text_field.dart';
 
 class AuthPasswordField extends StatelessWidget {
   final String label;

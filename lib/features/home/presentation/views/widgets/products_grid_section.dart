@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/theme/app_theme_colors.dart';
-import 'package:trendiva/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/home/domain/entities/product_entity.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/product_card.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/section_header.dart';
 
 class ProductsGridSection extends StatelessWidget {
   const ProductsGridSection({super.key, required this.products});
 
-  final List<ProductModel> products;
+  final List<ProductEntity> products;
 
   @override
   Widget build(BuildContext context) {

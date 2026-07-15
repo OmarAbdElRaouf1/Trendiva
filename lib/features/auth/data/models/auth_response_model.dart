@@ -1,13 +1,11 @@
-class AuthResponseModel {
-  const AuthResponseModel({
-    required this.accessToken,
-    required this.refreshToken,
-    this.expiresAtUtc,
-  });
+import 'package:trendiva/features/auth/domain/entities/auth_token_entity.dart';
 
-  final String accessToken;
-  final String refreshToken;
-  final DateTime? expiresAtUtc;
+class AuthResponseModel extends AuthTokenEntity {
+  const AuthResponseModel({
+    required super.accessToken,
+    required super.refreshToken,
+    super.expiresAtUtc,
+  });
 
   factory AuthResponseModel.fromJson(Map<String, dynamic> json) {
     return AuthResponseModel(

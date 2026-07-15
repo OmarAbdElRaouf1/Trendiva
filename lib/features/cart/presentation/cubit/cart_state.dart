@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:trendiva/features/cart/data/models/cart_model.dart';
+import 'package:trendiva/features/cart/domain/entities/cart_entity.dart';
 
 sealed class CartState extends Equatable {
   const CartState();
@@ -19,7 +19,7 @@ class CartLoading extends CartState {
 class CartLoaded extends CartState {
   const CartLoaded(this.cart);
 
-  final CartModel cart;
+  final CartEntity cart;
 
   @override
   List<Object?> get props => [cart];

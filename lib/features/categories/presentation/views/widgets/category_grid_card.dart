@@ -2,12 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
-import 'package:trendiva/features/home/data/models/category_model.dart';
+import 'package:trendiva/features/home/domain/entities/category_entity.dart';
 
 class CategoryGridCard extends StatelessWidget {
   const CategoryGridCard({super.key, required this.category});
 
-  final CategoryModel category;
+  final CategoryEntity category;
 
   @override
   Widget build(BuildContext context) {

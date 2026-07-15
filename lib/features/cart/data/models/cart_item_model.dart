@@ -1,25 +1,17 @@
-class CartItemModel {
-  const CartItemModel({
-    required this.itemId,
-    required this.productId,
-    required this.productName,
-    required this.productCoverUrl,
-    required this.quantity,
-    required this.discountPercentage,
-    required this.basePricePerUnit,
-    required this.finalPricePerUnit,
-    required this.totalPrice,
-  });
+import 'package:trendiva/features/cart/domain/entities/cart_item_entity.dart';
 
-  final String itemId;
-  final String productId;
-  final String productName;
-  final String productCoverUrl;
-  final int quantity;
-  final double discountPercentage;
-  final double basePricePerUnit;
-  final double finalPricePerUnit;
-  final double totalPrice;
+class CartItemModel extends CartItemEntity {
+  const CartItemModel({
+    required super.itemId,
+    required super.productId,
+    required super.productName,
+    required super.productCoverUrl,
+    required super.quantity,
+    required super.discountPercentage,
+    required super.basePricePerUnit,
+    required super.finalPricePerUnit,
+    required super.totalPrice,
+  });
 
   factory CartItemModel.fromJson(Map<String, dynamic> json) {
     return CartItemModel(

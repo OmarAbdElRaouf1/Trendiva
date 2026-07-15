@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trendiva/features/cart/data/repos/cart_repository.dart';
+import 'package:trendiva/features/cart/domain/repos/cart_repository.dart';
 import 'package:trendiva/features/cart/presentation/cubit/cart_state.dart';
 
 class CartCubit extends Cubit<CartState> {

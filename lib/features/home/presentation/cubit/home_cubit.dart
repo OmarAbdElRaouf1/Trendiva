@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trendiva/features/home/data/repos/categories_repository.dart';
-import 'package:trendiva/features/home/data/repos/offers_repository.dart';
-import 'package:trendiva/features/home/data/repos/products_repository.dart';
+import 'package:trendiva/features/home/domain/repos/categories_repository.dart';
+import 'package:trendiva/features/home/domain/repos/offers_repository.dart';
+import 'package:trendiva/features/home/domain/repos/products_repository.dart';
 import 'package:trendiva/features/home/presentation/cubit/home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {

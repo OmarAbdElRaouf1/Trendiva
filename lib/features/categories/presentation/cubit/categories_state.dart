@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:trendiva/features/home/data/models/category_model.dart';
+import 'package:trendiva/features/home/domain/entities/category_entity.dart';
 
 sealed class CategoriesState extends Equatable {
   const CategoriesState();
@@ -19,7 +19,7 @@ class CategoriesLoading extends CategoriesState {
 class CategoriesLoaded extends CategoriesState {
   const CategoriesLoaded(this.categories);
 
-  final List<CategoryModel> categories;
+  final List<CategoryEntity> categories;
 
   @override
   List<Object?> get props => [categories];

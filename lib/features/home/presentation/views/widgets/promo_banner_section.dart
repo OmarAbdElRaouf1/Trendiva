@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
-import 'package:trendiva/features/home/data/models/offer_model.dart';
+import 'package:trendiva/features/home/domain/entities/offer_entity.dart';
 
 class PromoBannerSection extends StatelessWidget {
   const PromoBannerSection({super.key, required this.offers});
 
-  final List<OfferModel> offers;
+  final List<OfferEntity> offers;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class PromoCard extends StatelessWidget {
   const PromoCard({super.key, required this.width, required this.offer});
 
   final double width;
-  final OfferModel offer;
+  final OfferEntity offer;
 
   @override
   Widget build(BuildContext context) {

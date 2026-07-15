@@ -11,11 +11,11 @@ import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_state.dart';
 import 'otp_screen.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../widgets/auth_header.dart';
-import '../widgets/auth_password_field.dart';
-import '../widgets/auth_switch_text.dart';
+import 'widgets/auth_header.dart';
+import 'widgets/auth_password_field.dart';
+import 'widgets/auth_switch_text.dart';
 import '../../../../core/widgets/custom_text_field.dart';
-import '../widgets/terms_checkbox.dart';
+import 'widgets/terms_checkbox.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});

@@ -1,17 +1,13 @@
-class OfferModel {
-  const OfferModel({
-    required this.id,
-    required this.name,
-    this.description = '',
-    this.coverUrl = '',
-    this.createdAt,
-  });
+import 'package:trendiva/features/home/domain/entities/offer_entity.dart';
 
-  final String id;
-  final String name;
-  final String description;
-  final String coverUrl;
-  final DateTime? createdAt;
+class OfferModel extends OfferEntity {
+  const OfferModel({
+    required super.id,
+    required super.name,
+    super.description,
+    super.coverUrl,
+    super.createdAt,
+  });
 
   factory OfferModel.fromJson(Map<String, dynamic> json) {
     return OfferModel(

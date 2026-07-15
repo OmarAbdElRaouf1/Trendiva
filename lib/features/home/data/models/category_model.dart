@@ -1,15 +1,12 @@
-class CategoryModel {
-  const CategoryModel({
-    required this.id,
-    required this.name,
-    this.description = '',
-    this.coverPictureUrl = '',
-  });
+import 'package:trendiva/features/home/domain/entities/category_entity.dart';
 
-  final String id;
-  final String name;
-  final String description;
-  final String coverPictureUrl;
+class CategoryModel extends CategoryEntity {
+  const CategoryModel({
+    required super.id,
+    required super.name,
+    super.description,
+    super.coverPictureUrl,
+  });
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) {
     return CategoryModel(

@@ -6,10 +6,16 @@ import 'package:trendiva/features/auth/presentation/views/forget_password_view.d
 import 'package:trendiva/features/auth/presentation/views/login_view.dart';
 import 'package:trendiva/features/auth/presentation/views/otp_screen.dart';
 import 'package:trendiva/features/auth/presentation/views/signup_view.dart';
-import 'package:trendiva/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/contact_us/presentation/views/contact_us_view.dart';
+import 'package:trendiva/features/help_center/presentation/views/help_center_view.dart';
+import 'package:trendiva/features/home/domain/entities/product_entity.dart';
 import 'package:trendiva/features/home/presentation/views/home_view.dart';
 import 'package:trendiva/features/onBoarding/presentation/views/on_boarding_view.dart';
+import 'package:trendiva/features/privacy_policy/presentation/views/privacy_policy_view.dart';
+import 'package:trendiva/features/product_details/presentation/cubit/reviews_cubit.dart';
+import 'package:trendiva/features/product_details/presentation/views/all_reviews_view.dart';
 import 'package:trendiva/features/product_details/presentation/views/product_details_view.dart';
+import 'package:trendiva/features/product_details/presentation/views/write_review_view.dart';
 import 'package:trendiva/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:trendiva/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:trendiva/features/splash/presentation/views/splash_view.dart';
@@ -36,7 +42,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const HomeView());
 
       case Routes.productDetails:
-        final product = settings.arguments as ProductModel;
+        final product = settings.arguments as ProductEntity;
         return MaterialPageRoute(
           builder: (_) => ProductDetailsView(product: product),
         );
@@ -64,12 +70,39 @@ class AppRouter {
       case Routes.aboutUsView:
         return MaterialPageRoute(builder: (_) => const AboutUsView());
 
+      case Routes.helpCenterView:
+        return MaterialPageRoute(builder: (_) => const HelpCenterView());
+
+      case Routes.privacyPolicyView:
+        return MaterialPageRoute(builder: (_) => const PrivacyPolicyView());
+
+      case Routes.contactUsView:
+        return MaterialPageRoute(builder: (_) => const ContactUsView());
+
       case Routes.editProfileView:
         final cubit = settings.arguments as ProfileCubit;
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
             value: cubit,
             child: const EditProfileView(),
+          ),
+        );
+
+      case Routes.allReviewsView:
+        final cubit = settings.arguments as ReviewsCubit;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: cubit,
+            child: const AllReviewsView(),
+          ),
+        );
+
+      case Routes.writeReviewView:
+        final cubit = settings.arguments as ReviewsCubit;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+            value: cubit,
+            child: const WriteReviewView(),
           ),
         );
 

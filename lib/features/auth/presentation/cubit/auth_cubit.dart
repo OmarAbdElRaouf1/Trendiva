@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trendiva/core/network/api_error.dart';
-import 'package:trendiva/features/auth/data/repos/auth_repository.dart';
+import 'package:trendiva/features/auth/domain/repos/auth_repository.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_state.dart';
 
 enum OtpPurpose { resetPassword, verifyEmail }
@@ -15,6 +15,8 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final auth = await _repository.login(email: email, password: password);
       emit(AuthLoggedIn(auth));
+    } on EmailNotVerifiedError catch (e) {
+      emit(AuthEmailNotVerified(e.email));
     } catch (e) {
       emit(AuthError(_message(e)));
     }

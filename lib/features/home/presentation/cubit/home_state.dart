@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:trendiva/features/home/data/models/category_model.dart';
-import 'package:trendiva/features/home/data/models/offer_model.dart';
-import 'package:trendiva/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/home/domain/entities/category_entity.dart';
+import 'package:trendiva/features/home/domain/entities/offer_entity.dart';
+import 'package:trendiva/features/home/domain/entities/product_entity.dart';
 
 sealed class HomeState extends Equatable {
   const HomeState();
@@ -25,9 +25,9 @@ class HomeLoaded extends HomeState {
     required this.offers,
   });
 
-  final List<ProductModel> products;
-  final List<CategoryModel> categories;
-  final List<OfferModel> offers;
+  final List<ProductEntity> products;
+  final List<CategoryEntity> categories;
+  final List<OfferEntity> offers;
 
   @override
   List<Object?> get props => [products, categories, offers];

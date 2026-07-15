@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:trendiva/features/auth/data/models/auth_response_model.dart';
+import 'package:trendiva/features/auth/domain/entities/auth_token_entity.dart';
 
 sealed class AuthState extends Equatable {
   const AuthState();
@@ -18,13 +18,20 @@ class AuthLoading extends AuthState {
 
 class AuthLoggedIn extends AuthState {
   const AuthLoggedIn(this.auth);
-  final AuthResponseModel auth;
+  final AuthTokenEntity auth;
   @override
   List<Object?> get props => [auth];
 }
 
 class AuthSignedUp extends AuthState {
   const AuthSignedUp();
+}
+
+class AuthEmailNotVerified extends AuthState {
+  const AuthEmailNotVerified(this.email);
+  final String email;
+  @override
+  List<Object?> get props => [email];
 }
 
 class AuthCodeSent extends AuthState {

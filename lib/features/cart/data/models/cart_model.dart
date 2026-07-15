@@ -1,13 +1,8 @@
 import 'package:trendiva/features/cart/data/models/cart_item_model.dart';
+import 'package:trendiva/features/cart/domain/entities/cart_entity.dart';
 
-class CartModel {
-  const CartModel({required this.cartId, required this.items});
-
-  final String cartId;
-  final List<CartItemModel> items;
-
-  double get subtotal =>
-      items.fold(0, (sum, item) => sum + item.totalPrice);
+class CartModel extends CartEntity {
+  const CartModel({required super.cartId, required super.items});
 
   factory CartModel.fromJson(Map<String, dynamic> json) {
     final items = json['cartItems'] as List;

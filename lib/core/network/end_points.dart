@@ -17,4 +17,6 @@ class EndPoints {
   static const String cartItems = '/api/cart/items';
   static const String decrementCartItem = '/api/cart/items/decrement';
   static String cartItemById(String id) => '/api/cart/items/$id';
+
+  static String reviews(String productId) => '/api/reviews/$productId';
 }

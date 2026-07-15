@@ -4,7 +4,7 @@ import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:trendiva/core/theme/app_theme_colors.dart';
-import 'package:trendiva/features/cart/data/models/cart_item_model.dart';
+import 'package:trendiva/features/cart/domain/entities/cart_item_entity.dart';
 
 class CustomContainer extends StatelessWidget {
   const CustomContainer({
@@ -15,7 +15,7 @@ class CustomContainer extends StatelessWidget {
     required this.onRemove,
   });
 
-  final CartItemModel item;
+  final CartItemEntity item;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
   final VoidCallback onRemove;

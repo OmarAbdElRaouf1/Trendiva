@@ -9,9 +9,9 @@ import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/validators.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_state.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_app_bar.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_button_click.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_button_icon.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_app_bar.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_button_click.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_button_icon.dart';
 import 'package:trendiva/core/widgets/custom_text_field.dart';
 import 'otp_screen.dart';
 

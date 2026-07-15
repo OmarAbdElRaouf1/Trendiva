@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trendiva/features/categories/presentation/cubit/categories_state.dart';
-import 'package:trendiva/features/home/data/repos/categories_repository.dart';
+import 'package:trendiva/features/home/domain/repos/categories_repository.dart';
 
 class CategoriesCubit extends Cubit<CategoriesState> {
   CategoriesCubit(this._repository) : super(const CategoriesInitial());

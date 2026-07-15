@@ -9,13 +9,13 @@ import 'package:trendiva/core/theme/app_theme_colors.dart';
 import 'package:trendiva/core/utils/app_colors.dart';
 import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/features/cart/presentation/cubit/cart_cubit.dart';
-import 'package:trendiva/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/home/domain/entities/product_entity.dart';
 import 'package:trendiva/features/home/presentation/views/widgets/custom_icon_button.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.product});
 
-  final ProductModel product;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {

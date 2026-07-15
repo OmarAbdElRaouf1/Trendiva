@@ -1,18 +1,22 @@
 import 'package:trendiva/core/network/api_service.dart';
 import 'package:trendiva/core/network/end_points.dart';
 import 'package:trendiva/features/cart/data/models/cart_model.dart';
+import 'package:trendiva/features/cart/domain/entities/cart_entity.dart';
+import 'package:trendiva/features/cart/domain/repos/cart_repository.dart';
 
-class CartRepository {
-  CartRepository(this._apiService);
+class CartRepositoryImpl implements CartRepository {
+  CartRepositoryImpl(this._apiService);
 
   final ApiService _apiService;
 
-  Future<CartModel> getCart() async {
+  @override
+  Future<CartEntity> getCart() async {
     final response = await _apiService.get(EndPoints.cart);
     return CartModel.fromJson(response as Map<String, dynamic>);
   }
 
-  Future<CartModel> addItem({
+  @override
+  Future<CartEntity> addItem({
     required String productId,
     required int quantity,
   }) async {
@@ -23,7 +27,8 @@ class CartRepository {
     return getCart();
   }
 
-  Future<CartModel> decrementItem({
+  @override
+  Future<CartEntity> decrementItem({
     required String itemId,
     required int quantity,
   }) async {
@@ -34,7 +39,8 @@ class CartRepository {
     return getCart();
   }
 
-  Future<CartModel> removeItem(String itemId) async {
+  @override
+  Future<CartEntity> removeItem(String itemId) async {
     await _apiService.delete(EndPoints.cartItemById(itemId), {'id': itemId});
     return getCart();
   }

@@ -1,15 +1,12 @@
-class UserModel {
-  const UserModel({
-    required this.userId,
-    required this.email,
-    required this.fullName,
-    this.profilePicture,
-  });
+import 'package:trendiva/features/profile/domain/entities/user_entity.dart';
 
-  final String userId;
-  final String email;
-  final String fullName;
-  final String? profilePicture;
+class UserModel extends UserEntity {
+  const UserModel({
+    required super.userId,
+    required super.email,
+    required super.fullName,
+    super.profilePicture,
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(

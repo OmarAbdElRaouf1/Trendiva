@@ -2,13 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gap/flutter_gap.dart';
 import 'package:flutter_screenutil_plus/flutter_screenutil_plus.dart';
 import 'package:trendiva/core/theme/app_theme_colors.dart';
-import 'package:trendiva/features/home/data/models/product_model.dart';
+import 'package:trendiva/features/product_details/domain/entities/review_entity.dart';
 import 'package:trendiva/features/product_details/presentation/views/widgets/star_rating.dart';
 
 class ReviewTile extends StatelessWidget {
   const ReviewTile({super.key, required this.review});
 
-  final Review review;
+  final ReviewEntity review;
+
+  String get _timeAgo {
+    final createdAt = review.createdAt;
+    if (createdAt == null) return '';
+    final diff = DateTime.now().difference(createdAt);
+    if (diff.inDays >= 365) return '${diff.inDays ~/ 365}y ago';
+    if (diff.inDays >= 30) return '${diff.inDays ~/ 30}mo ago';
+    if (diff.inDays >= 1) return '${diff.inDays}d ago';
+    if (diff.inHours >= 1) return '${diff.inHours}h ago';
+    if (diff.inMinutes >= 1) return '${diff.inMinutes}m ago';
+    return 'Just now';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +31,7 @@ class ReviewTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              review.author,
+              review.userName,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
@@ -27,7 +39,7 @@ class ReviewTile extends StatelessWidget {
               ),
             ),
             Text(
-              review.timeAgo,
+              _timeAgo,
               style: TextStyle(fontSize: 12, color: context.colors.textMuted),
             ),
           ],
@@ -42,17 +54,6 @@ class ReviewTile extends StatelessWidget {
             height: 1.5,
             color: context.colors.textSecondary,
           ),
-        ),
-        Gap(10.h),
-        Row(
-          children: [
-            Icon(Icons.thumb_up_alt_outlined, size: 15, color: context.colors.textMuted),
-            Gap(6.w),
-            Text(
-              'Helpful (${review.helpfulCount})',
-              style: TextStyle(fontSize: 13, color: context.colors.textMuted),
-            ),
-          ],
         ),
       ],
     );

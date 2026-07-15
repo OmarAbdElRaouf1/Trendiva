@@ -3,45 +3,39 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// Persists user-chosen profile customizations (photo, display name/email
-/// overrides) on-device only — nothing here is synced to the backend.
 abstract class LocalProfileStore {
-  static const String _photoFileName = 'profile_photo.jpg';
-  static const String _nameKey = 'local_profile_name';
-  static const String _emailKey = 'local_profile_email';
-
-  static Future<File> _photoFile() async {
+  static Future<File> _photoFile(String userId) async {
     final dir = await getApplicationDocumentsDirectory();
-    return File('${dir.path}/$_photoFileName');
+    return File('${dir.path}/profile_photo_$userId.jpg');
   }
 
-  static Future<File?> loadPhoto() async {
-    final file = await _photoFile();
+  static Future<File?> loadPhoto(String userId) async {
+    final file = await _photoFile(userId);
     return file.existsSync() ? file : null;
   }
 
-  static Future<File> savePhoto(File source) async {
-    final file = await _photoFile();
+  static Future<File> savePhoto(String userId, File source) async {
+    final file = await _photoFile(userId);
     return source.copy(file.path);
   }
 
-  static Future<void> saveName(String name) async {
+  static Future<void> saveName(String userId, String name) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_nameKey, name);
+    await prefs.setString('local_profile_name_$userId', name);
   }
 
-  static Future<String?> loadName() async {
+  static Future<String?> loadName(String userId) async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_nameKey);
+    return prefs.getString('local_profile_name_$userId');
   }
 
-  static Future<void> saveEmail(String email) async {
+  static Future<void> saveEmail(String userId, String email) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_emailKey, email);
+    await prefs.setString('local_profile_email_$userId', email);
   }
 
-  static Future<String?> loadEmail() async {
+  static Future<String?> loadEmail(String userId) async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_emailKey);
+    return prefs.getString('local_profile_email_$userId');
   }
 }

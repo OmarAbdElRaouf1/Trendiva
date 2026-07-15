@@ -10,11 +10,12 @@ import 'package:trendiva/core/utils/app_text_styles.dart';
 import 'package:trendiva/core/utils/validators.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_state.dart';
+import 'package:trendiva/features/auth/presentation/views/otp_screen.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../widgets/auth_card.dart';
-import '../widgets/auth_header.dart';
-import '../widgets/auth_password_field.dart';
-import '../widgets/auth_switch_text.dart';
+import 'widgets/auth_card.dart';
+import 'widgets/auth_header.dart';
+import 'widgets/auth_password_field.dart';
+import 'widgets/auth_switch_text.dart';
 import '../../../../core/widgets/custom_text_field.dart';
 
 class LoginView extends StatelessWidget {
@@ -71,6 +72,15 @@ class _LoginViewBodyState extends State<_LoginViewBody> {
       listener: (context, state) {
         if (state is AuthLoggedIn) {
           context.pushAndRemoveUntil(Routes.rootView);
+        } else if (state is AuthEmailNotVerified) {
+          context.pushNamed(
+            Routes.otpView,
+            arguments: OtpScreenArgs(
+              email: state.email,
+              purpose: OtpPurpose.verifyEmail,
+              sendOnOpen: true,
+            ),
+          );
         } else if (state is AuthError) {
           ScaffoldMessenger.of(
             context,

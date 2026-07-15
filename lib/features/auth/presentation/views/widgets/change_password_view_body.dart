@@ -7,10 +7,10 @@ import 'package:trendiva/core/utils/validators.dart';
 import 'package:trendiva/core/widgets/custom_button.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:trendiva/features/auth/presentation/cubit/auth_state.dart';
-import 'package:trendiva/features/auth/presentation/widgets/auth_password_field.dart';
-import 'package:trendiva/features/auth/presentation/widgets/password_requirements_card.dart';
-import 'package:trendiva/features/auth/presentation/widgets/password_strength.dart';
-import 'package:trendiva/features/auth/presentation/widgets/success_dialog.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/auth_password_field.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/password_requirements_card.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/password_strength.dart';
+import 'package:trendiva/features/auth/presentation/views/widgets/success_dialog.dart';
 
 class ChangePasswordViewBody extends StatefulWidget {
   const ChangePasswordViewBody({
