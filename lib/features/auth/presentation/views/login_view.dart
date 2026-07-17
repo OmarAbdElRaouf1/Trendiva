@@ -53,7 +53,7 @@ class _LoginViewBodyState extends State<_LoginViewBody> {
     FocusScope.of(context).unfocus();
     final error =
         Validators.email(emailController.text) ??
-        Validators.password(passwordController.text);
+        Validators.loginPassword(passwordController.text);
     if (error != null) {
       ScaffoldMessenger.of(
         context,

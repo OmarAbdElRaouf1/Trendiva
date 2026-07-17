@@ -21,9 +21,7 @@ class AuthRepositoryImpl implements AuthRepository {
         'email': email,
         'password': password,
       });
-      final auth = AuthResponseModel.fromJson(
-        response as Map<String, dynamic>,
-      );
+      final auth = AuthResponseModel.fromJson(response as Map<String, dynamic>);
       await PrefHelper.saveToken(auth.accessToken);
       await PrefHelper.saveRefreshToken(auth.refreshToken);
       return auth;
@@ -31,8 +29,12 @@ class AuthRepositoryImpl implements AuthRepository {
       if (e.message.toLowerCase().contains('not verified')) {
         throw EmailNotVerifiedError(email: email);
       }
-      if (e.statusCode == 401) {
-        throw ApiError(message: 'Incorrect email or password.', statusCode: 401);
+
+      if (e.statusCode == 401 || e.statusCode == 400) {
+        throw ApiError(
+          message: 'Incorrect email or password.',
+          statusCode: 401,
+        );
       }
       rethrow;
     }

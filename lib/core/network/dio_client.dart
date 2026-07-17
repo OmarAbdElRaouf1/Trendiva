@@ -7,10 +7,9 @@ import 'package:trendiva/core/routing/routes.dart';
 import 'package:trendiva/core/utils/pref_helper.dart';
 
 class DioClient {
-  static const String _baseUrl = 'https://accessories-eshop.runasp.net';
+  static const _baseUrl = 'https://accessories-eshop.runasp.net';
 
   final Dio _dio = Dio(BaseOptions(baseUrl: _baseUrl));
-
   final Dio _refreshDio = Dio(BaseOptions(baseUrl: _baseUrl));
 
   bool _isRefreshing = false;
@@ -21,30 +20,30 @@ class DioClient {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           final token = await PrefHelper.getToken();
-          if (token != null && token.isNotEmpty) {
+
+          if (token?.isNotEmpty ?? false) {
             options.headers['Authorization'] = 'Bearer $token';
           }
-          return handler.next(options);
+
+          handler.next(options);
         },
         onError: (error, handler) async {
           final path = error.requestOptions.path;
-          final isAuthEndpoint =
-              path == EndPoints.login || path == EndPoints.refreshToken;
 
-          if (error.response?.statusCode == 401 && !isAuthEndpoint) {
-            final newToken = await _refreshAccessToken();
-            if (newToken != null) {
-              try {
-                final retryOptions = error.requestOptions;
-                retryOptions.headers['Authorization'] = 'Bearer $newToken';
-                final response = await _dio.fetch(retryOptions);
-                return handler.resolve(response);
-              } catch (_) {
-                return handler.next(error);
-              }
+          if (error.response?.statusCode == 401 &&
+              path != EndPoints.login &&
+              path != EndPoints.refreshToken) {
+            final token = await _refreshAccessToken();
+
+            if (token != null) {
+              error.requestOptions.headers['Authorization'] = 'Bearer $token';
+
+              final response = await _dio.fetch(error.requestOptions);
+              return handler.resolve(response);
             }
           }
-          return handler.next(error);
+
+          handler.next(error);
         },
       ),
     );
@@ -55,35 +54,40 @@ class DioClient {
 
     _isRefreshing = true;
     _refreshCompleter = Completer<String?>();
+
     _doRefresh().then(_refreshCompleter!.complete).whenComplete(() {
       _isRefreshing = false;
     });
+
     return _refreshCompleter!.future;
   }
 
   Future<String?> _doRefresh() async {
     try {
       final refreshToken = await PrefHelper.getRefreshToken();
-      if (refreshToken == null || refreshToken.isEmpty) return null;
+
+      if (refreshToken?.isEmpty ?? true) return null;
 
       final response = await _refreshDio.post(
         EndPoints.refreshToken,
         data: {'refreshToken': refreshToken, 'useCookies': false},
-        options: Options(contentType: 'application/json'),
+        options: Options(contentType: Headers.jsonContentType),
       );
-      final data = response.data as Map<String, dynamic>;
-      final newAccessToken = data['accessToken'] as String;
-      final newRefreshToken = data['refreshToken'] as String;
 
-      await PrefHelper.saveToken(newAccessToken);
-      await PrefHelper.saveRefreshToken(newRefreshToken);
-      return newAccessToken;
+      final data = response.data as Map<String, dynamic>;
+
+      await PrefHelper.saveToken(data['accessToken']);
+      await PrefHelper.saveRefreshToken(data['refreshToken']);
+
+      return data['accessToken'];
     } catch (_) {
       await PrefHelper.clearToken();
+
       navigatorKey.currentState?.pushNamedAndRemoveUntil(
         Routes.loginView,
-        (route) => false,
+        (_) => false,
       );
+
       return null;
     }
   }

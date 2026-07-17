@@ -18,6 +18,12 @@ class Validators {
     return null;
   }
 
+  
+  static String? loginPassword(String value) {
+    if (value.isEmpty) return 'Please enter your password.';
+    return null;
+  }
+
   static String? confirmPassword(String password, String confirmPassword) {
     if (confirmPassword.isEmpty) return 'Please confirm your password.';
     if (password != confirmPassword) return 'Passwords do not match.';
